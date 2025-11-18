@@ -1,8 +1,8 @@
 {
   "name": "custom-plugin-game-developer",
   "version": "1.0.0",
-  "title": "Complete Game Developer Plugin - Master Game Development",
-  "description": "Comprehensive game development learning system covering all aspects: game design, programming, graphics, audio, networking, optimization, and publishing. Support for Unity, Unreal Engine, Godot, and other engines.",
+  "title": "🎮 Complete Game Developer Plugin - Master Game Development",
+  "description": "Comprehensive game development learning system with 7 specialized agents, 21 in-depth skills, 4 slash commands, and automation hooks. Master game design, programming, graphics, audio, networking, tools, and publishing across Unity, Unreal Engine, and Godot.",
   "author": {
     "name": "Game Developer Community",
     "url": "https://roadmap.sh/game-developer"
@@ -20,7 +20,14 @@
     "game-graphics",
     "game-networking",
     "multiplayer-games",
-    "game-optimization"
+    "game-optimization",
+    "game-audio",
+    "game-design-theory",
+    "level-design",
+    "game-publishing",
+    "shader-programming",
+    "particle-systems",
+    "game-servers"
   ],
   "repository": {
     "type": "git",
@@ -29,45 +36,45 @@
   "agents": [
     {
       "id": "game-designer",
-      "name": "Game Designer Agent",
+      "name": "🎨 Game Designer Agent",
       "file": "agents/01-game-designer.md",
-      "description": "Expert in game design, mechanics, level design, and player experience. Creates engaging gameplay and defines game vision."
+      "description": "Expert in game design, mechanics, level design, player experience, and game balance. Creates engaging gameplay and defines game vision."
     },
     {
       "id": "game-programmer",
-      "name": "Game Programmer Agent",
+      "name": "💻 Game Programmer Agent",
       "file": "agents/02-game-programmer.md",
-      "description": "Specialist in game programming with C# and C++. Architecture, gameplay systems, optimization, and engine systems."
+      "description": "Specialist in C#/C++ game programming, engine systems, gameplay systems, architecture patterns, and code optimization."
     },
     {
       "id": "graphics-rendering",
-      "name": "Graphics & Rendering Agent",
+      "name": "🖼️ Graphics & Rendering Agent",
       "file": "agents/03-graphics-rendering.md",
-      "description": "Expert in 3D graphics, shaders, VFX, lighting, and rendering optimization. Visual excellence and performance."
+      "description": "Expert in 3D graphics, shader programming, VFX systems, lighting design, and rendering optimization for visual excellence."
     },
     {
       "id": "audio-sound-design",
-      "name": "Audio & Sound Design Agent",
+      "name": "🎵 Audio & Sound Design Agent",
       "file": "agents/04-audio-sound-design.md",
-      "description": "Specialist in game audio, music composition, spatial audio, and sound effects implementation."
+      "description": "Specialist in game audio, music composition, spatial audio, voice systems, and immersive soundscapes."
     },
     {
       "id": "networking-multiplayer",
-      "name": "Networking & Multiplayer Agent",
+      "name": "🌐 Networking & Multiplayer Agent",
       "file": "agents/05-networking-multiplayer.md",
-      "description": "Expert in multiplayer systems, netcode, synchronization, and scalable game servers."
+      "description": "Expert in multiplayer systems, netcode, server architecture, synchronization algorithms, and scalable game backends."
     },
     {
       "id": "tools-pipeline",
-      "name": "Tools & Pipeline Agent",
+      "name": "⚙️ Tools & Pipeline Agent",
       "file": "agents/06-tools-pipeline.md",
-      "description": "Specialist in game development tools, asset pipelines, build systems, and automation."
+      "description": "Specialist in game development tools, asset pipelines, build automation, CI/CD systems, and team workflows."
     },
     {
       "id": "game-publishing",
-      "name": "Game Publishing Agent",
+      "name": "🚀 Game Publishing Agent",
       "file": "agents/07-game-publishing.md",
-      "description": "Expert in game publishing, platforms, monetization, marketing, and post-launch support."
+      "description": "Expert in game publishing, platform requirements, monetization strategies, marketing, and live operations."
     }
   ],
   "commands": [
@@ -75,69 +82,153 @@
       "id": "learn-gamedev",
       "name": "Learn Game Development",
       "file": "commands/learn.md",
-      "description": "Start a game development learning path tailored to your interests and experience level"
+      "description": "Start a personalized game development learning path based on your interests, experience level, and target specialization"
     },
     {
       "id": "explore-gamedev",
       "name": "Explore Game Development",
       "file": "commands/explore.md",
-      "description": "Explore game development roles, specializations, and career paths"
+      "description": "Explore game development roles, specializations, game engines, and career paths in the industry"
     },
     {
       "id": "game-profile",
       "name": "Game Dev Profile",
       "file": "commands/profile.md",
-      "description": "Assess your game development skills and get personalized recommendations"
+      "description": "Assess your current game development skills, identify knowledge gaps, and get personalized learning recommendations"
     },
     {
       "id": "gamedev-projects",
       "name": "Game Projects",
       "file": "commands/projects.md",
-      "description": "Browse hands-on game development projects from beginner to professional level"
+      "description": "Browse hands-on game development projects from beginner to professional level with complete guides"
     }
   ],
   "skills": [
     {
+      "id": "game-design-theory",
+      "name": "Game Design Theory",
+      "file": "skills/game-design-theory/SKILL.md",
+      "description": "Core game design fundamentals, design patterns, player psychology, mechanics balancing, and what makes games fun"
+    },
+    {
+      "id": "level-design",
+      "name": "Level Design",
+      "file": "skills/level-design/SKILL.md",
+      "description": "Level design principles, pacing, difficulty progression, environmental storytelling, and spatial design"
+    },
+    {
+      "id": "gameplay-mechanics",
+      "name": "Gameplay Mechanics",
+      "file": "skills/gameplay-mechanics/SKILL.md",
+      "description": "Implementing core game systems, mechanics interaction, playtesting methodology, and balance refinement"
+    },
+    {
       "id": "game-engines",
-      "name": "Game Engines & Frameworks",
+      "name": "Game Engines",
       "file": "skills/game-engines/SKILL.md",
-      "description": "Master game engines: Unity, Unreal Engine, Godot, and other platforms"
+      "description": "Master game engines: Unity, Unreal Engine, Godot - architecture, systems, and engine-specific workflows"
     },
     {
       "id": "programming-languages",
       "name": "Game Programming Languages",
       "file": "skills/programming-languages/SKILL.md",
-      "description": "C#, C++, GDScript, and other game programming languages"
+      "description": "C#, C++, GDScript - game-specific programming languages, idioms, and optimization techniques"
+    },
+    {
+      "id": "programming-architecture",
+      "name": "Programming Architecture",
+      "file": "skills/programming-architecture/SKILL.md",
+      "description": "Game code architecture, design patterns (ECS, State Machine), scalability, and maintainable code structure"
+    },
+    {
+      "id": "memory-management",
+      "name": "Memory Management",
+      "file": "skills/memory-management/SKILL.md",
+      "description": "Memory optimization, object pooling, garbage collection tuning, and efficient resource management"
     },
     {
       "id": "graphics-rendering",
       "name": "Graphics & Rendering",
       "file": "skills/graphics-rendering/SKILL.md",
-      "description": "3D graphics, shaders, VFX, lighting, and rendering techniques"
+      "description": "3D graphics fundamentals, rendering pipeline, visual techniques, and optimization for all platforms"
+    },
+    {
+      "id": "shader-techniques",
+      "name": "Shader Programming Techniques",
+      "file": "skills/shader-techniques/SKILL.md",
+      "description": "Advanced shader programming, custom materials, visual effects, and rendering optimization"
+    },
+    {
+      "id": "particle-systems",
+      "name": "Particle Systems & VFX",
+      "file": "skills/particle-systems/SKILL.md",
+      "description": "Creating particle effects, explosions, fire/smoke, magic effects, and visual polish through particles"
     },
     {
       "id": "audio-systems",
-      "name": "Audio & Sound Systems",
+      "name": "Audio Systems",
       "file": "skills/audio-systems/SKILL.md",
-      "description": "Game audio, music systems, spatial audio, and sound implementation"
+      "description": "Game audio programming, sound implementation, spatial audio, voice systems, and audio engines like Wwise/FMOD"
+    },
+    {
+      "id": "daw-music",
+      "name": "DAW & Game Music Composition",
+      "file": "skills/daw-music/SKILL.md",
+      "description": "Digital Audio Workstations, music composition, interactive music systems, and game audio integration"
     },
     {
       "id": "networking-servers",
       "name": "Networking & Game Servers",
       "file": "skills/networking-servers/SKILL.md",
-      "description": "Multiplayer systems, netcode, synchronization, and dedicated servers"
+      "description": "Multiplayer systems, netcode, game servers, synchronization, and scalable online game architectures"
+    },
+    {
+      "id": "synchronization-algorithms",
+      "name": "Synchronization Algorithms",
+      "file": "skills/synchronization-algorithms/SKILL.md",
+      "description": "Network sync, lag compensation, client prediction, state consistency, and smooth multiplayer gameplay"
+    },
+    {
+      "id": "game-servers",
+      "name": "Game Server Architecture",
+      "file": "skills/game-servers/SKILL.md",
+      "description": "Dedicated servers, matchmaking systems, backend architecture, and scaling for online games"
     },
     {
       "id": "optimization-performance",
       "name": "Optimization & Performance",
       "file": "skills/optimization-performance/SKILL.md",
-      "description": "Performance optimization, profiling, and multi-platform support"
+      "description": "Performance profiling, FPS optimization, memory management, and multi-platform performance"
     },
     {
       "id": "game-tools-workflows",
       "name": "Game Development Tools & Workflows",
       "file": "skills/game-tools-workflows/SKILL.md",
-      "description": "Development tools, asset pipelines, version control, and build systems"
+      "description": "Development tools, asset pipelines, version control, build systems, and team collaboration"
+    },
+    {
+      "id": "ci-cd-automation",
+      "name": "CI/CD & Build Automation",
+      "file": "skills/ci-cd-automation/SKILL.md",
+      "description": "Continuous integration/deployment, automated testing, build pipelines, and team workflow automation"
+    },
+    {
+      "id": "asset-optimization",
+      "name": "Asset Pipeline Optimization",
+      "file": "skills/asset-optimization/SKILL.md",
+      "description": "Asset import optimization, compression, streaming, memory management, and efficient resource handling"
+    },
+    {
+      "id": "publishing-platforms",
+      "name": "Game Publishing Platforms",
+      "file": "skills/publishing-platforms/SKILL.md",
+      "description": "Platform submission, certification requirements, distribution across Steam, console, mobile platforms"
+    },
+    {
+      "id": "monetization-systems",
+      "name": "Monetization & Economy Systems",
+      "file": "skills/monetization-systems/SKILL.md",
+      "description": "Monetization strategies, in-app purchases, battle passes, economy design, and player retention mechanics"
     }
   ],
   "hooks": {
