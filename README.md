@@ -28,15 +28,24 @@ claude code ./custom-plugin-game-developer
 6. **Tools & Pipeline** - Asset management, build systems, automation
 7. **Game Publishing** - Platforms, monetization, live ops
 
-### 7 Comprehensive Skills
+### 21 Comprehensive Skill Modules
 
-1. **Game Engines** - Unity, Unreal Engine, Godot mastery
-2. **Programming Languages** - C#, C++, GDScript expertise
-3. **Graphics & Rendering** - 3D graphics, shaders, optimization
-4. **Audio Systems** - Game audio, music, voice implementation
-5. **Networking & Servers** - Multiplayer systems, game servers
-6. **Optimization & Performance** - Frame rate, memory, profiling
-7. **Tools & Workflows** - Pipelines, version control, CI/CD
+**Design & Theory**: Game Design Theory, Level Design, Gameplay Mechanics
+**Programming**: Programming Languages, Programming Architecture, Memory Management
+**Graphics**: Graphics Rendering, Shader Techniques, Particle Systems
+**Audio**: Audio Sound Design, DAW & Music Composition
+**Networking**: Networking Protocols, Synchronization Algorithms, Game Servers
+**Tools & Automation**: CI/CD Automation, Asset Optimization
+**Publishing & Business**: Publishing Platforms, Monetization Systems
+
+Each skill module includes:
+- Comprehensive theoretical foundations
+- Practical implementation examples
+- Code examples and best practices
+- Real-world application scenarios
+- Learning progression (Beginner → Advanced)
+- Tool recommendations
+- Related agents and resources
 
 ### 4 Powerful Commands
 
@@ -187,16 +196,37 @@ Find projects matching your skill level (beginner→professional).
 
 ## 🌟 Key Features
 
-✅ **7 Expert Agents** - Specialized guidance in parallel
-✅ **Comprehensive Skills** - 1000+ hours of learning content
-✅ **Real-World Projects** - Beginner to professional level
-✅ **Personalized Learning** - Tailored to your specialization
-✅ **Progress Tracking** - Monitor your advancement
-✅ **Portfolio Building** - Showcase your games
-✅ **Community Networking** - Connect with developers
-✅ **Industry Insights** - Stay updated on trends
-✅ **Game Jam Ready** - Preparation and team finding
-✅ **Publishing Guide** - Step-by-step launch checklist
+### Expert Guidance
+✅ **7 Specialized Agents** - Parallel expert guidance in every game dev discipline
+✅ **192-204 Line Agents** - Comprehensive expertise areas with detailed methodologies
+✅ **12+ Capabilities Per Agent** - Deep specialization in key competencies
+
+### Learning & Development
+✅ **Comprehensive Skills** - 21 detailed skill modules with 400+ lines each
+✅ **8-18 Month Learning Paths** - Complete roadmaps from beginner to professional
+✅ **500+ Line Command Guides** - Detailed workflows with examples for each specialization
+✅ **Personalized Learning** - Tailored paths matching your role and engine choice
+✅ **Progress Tracking** - Monitor milestones, completed projects, and advancement
+
+### Practical Project-Based Learning
+✅ **Real-World Projects** - Portfolio-building projects from beginner to professional
+✅ **Game Jam Ready** - Complete preparation guides and team networking
+✅ **Portfolio Building** - Showcase your best work and build game development credentials
+✅ **Step-by-Step Walkthroughs** - Detailed project guides with milestones
+
+### Community & Career
+✅ **Industry Insights** - Stay updated on trends and best practices
+✅ **Community Networking** - Connect with game developers and find mentors
+✅ **Publishing Guide** - Complete step-by-step launch checklist for all platforms
+✅ **Career Roadmaps** - Clear progression from junior to senior roles
+✅ **Professional Standards** - Enterprise-quality practices and workflows
+
+### Technical Depth
+✅ **Multiple Engines** - Unity, Unreal Engine, and Godot expertise
+✅ **Advanced Techniques** - Shaders, netcode, audio middleware, CI/CD automation
+✅ **Optimization Focus** - Performance profiling, memory management, rendering optimization
+✅ **Architecture Patterns** - Clean code, design patterns, scalable systems
+✅ **Tools & Infrastructure** - Build systems, asset pipelines, automation
 
 ## 🎯 Perfect For
 
