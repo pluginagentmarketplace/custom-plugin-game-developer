@@ -1,27 +1,26 @@
 {
-  "name": "developer-roadmap-plugin",
+  "name": "custom-plugin-game-developer",
   "version": "1.0.0",
-  "title": "Complete Developer Roadmap Plugin - 66 Roles & Career Paths",
-  "description": "Comprehensive learning system based on kamranahmedse/developer-roadmap with 66 different development roles, 7 specialized agents, and advanced skill tracking. Covers all career paths: Frontend, Backend, DevOps, Data/AI, Mobile, Game Dev, Security, Architecture, and more.",
+  "title": "Complete Game Developer Plugin - Master Game Development",
+  "description": "Comprehensive game development learning system covering all aspects: game design, programming, graphics, audio, networking, optimization, and publishing. Support for Unity, Unreal Engine, Godot, and other engines.",
   "author": {
-    "name": "Developer Roadmap Plugin Team",
-    "url": "https://github.com/kamranahmedse/developer-roadmap"
+    "name": "Game Developer Community",
+    "url": "https://roadmap.sh/game-developer"
   },
   "keywords": [
-    "developer-roadmap",
-    "career-path",
-    "learning",
-    "web-development",
-    "backend",
-    "frontend",
-    "devops",
-    "data-engineering",
-    "machine-learning",
-    "mobile-development",
     "game-development",
-    "cybersecurity",
-    "system-design",
-    "66-roles"
+    "game-programmer",
+    "game-designer",
+    "unity",
+    "unreal-engine",
+    "godot",
+    "game-engines",
+    "game-development-career",
+    "indie-game-developer",
+    "game-graphics",
+    "game-networking",
+    "multiplayer-games",
+    "game-optimization"
   ],
   "repository": {
     "type": "git",
@@ -29,116 +28,116 @@
   },
   "agents": [
     {
-      "id": "web-development-specialist",
-      "name": "Web Development Specialist",
-      "file": "agents/01-web-development-specialist.md",
-      "description": "Expert in all web development roles: Frontend, Backend, Full Stack, and framework-specific paths (React, Vue, Angular, Next.js, Node.js, Laravel, ASP.NET Core, etc.)"
+      "id": "game-designer",
+      "name": "Game Designer Agent",
+      "file": "agents/01-game-designer.md",
+      "description": "Expert in game design, mechanics, level design, and player experience. Creates engaging gameplay and defines game vision."
     },
     {
-      "id": "infrastructure-devops-engineer",
-      "name": "Infrastructure & DevOps Engineer",
-      "file": "agents/02-infrastructure-devops-engineer.md",
-      "description": "Specialist in DevOps, containerization (Docker), orchestration (Kubernetes), Infrastructure as Code (Terraform), cloud platforms (AWS), and Linux systems"
+      "id": "game-programmer",
+      "name": "Game Programmer Agent",
+      "file": "agents/02-game-programmer.md",
+      "description": "Specialist in game programming with C# and C++. Architecture, gameplay systems, optimization, and engine systems."
     },
     {
-      "id": "data-ai-specialist",
-      "name": "Data & AI Specialist",
-      "file": "agents/03-data-ai-specialist.md",
-      "description": "Expert in Machine Learning, AI Engineering, Data Engineering, Data Analysis, BI, MLOps, and AI-based development patterns"
+      "id": "graphics-rendering",
+      "name": "Graphics & Rendering Agent",
+      "file": "agents/03-graphics-rendering.md",
+      "description": "Expert in 3D graphics, shaders, VFX, lighting, and rendering optimization. Visual excellence and performance."
     },
     {
-      "id": "architecture-system-design-expert",
-      "name": "Architecture & System Design Expert",
-      "file": "agents/04-architecture-system-design-expert.md",
-      "description": "Specialist in software architecture, system design, design patterns, API design, scalability, and enterprise architecture principles"
+      "id": "audio-sound-design",
+      "name": "Audio & Sound Design Agent",
+      "file": "agents/04-audio-sound-design.md",
+      "description": "Specialist in game audio, music composition, spatial audio, and sound effects implementation."
     },
     {
-      "id": "mobile-game-developer",
-      "name": "Mobile & Game Developer",
-      "file": "agents/05-mobile-game-developer.md",
-      "description": "Expert in mobile development (Android, iOS, React Native, Flutter) and game development (Client-side, Server-side game architecture)"
+      "id": "networking-multiplayer",
+      "name": "Networking & Multiplayer Agent",
+      "file": "agents/05-networking-multiplayer.md",
+      "description": "Expert in multiplayer systems, netcode, synchronization, and scalable game servers."
     },
     {
-      "id": "security-quality-specialist",
-      "name": "Security & Quality Specialist",
-      "file": "agents/06-security-quality-specialist.md",
-      "description": "Expert in cybersecurity, QA/Testing, code review practices, security best practices, and compliance frameworks"
+      "id": "tools-pipeline",
+      "name": "Tools & Pipeline Agent",
+      "file": "agents/06-tools-pipeline.md",
+      "description": "Specialist in game development tools, asset pipelines, build systems, and automation."
     },
     {
-      "id": "professional-development-advisor",
-      "name": "Professional Development Advisor",
-      "file": "agents/07-professional-development-advisor.md",
-      "description": "Specialist in career development roles: Product Management, Engineering Management, Technical Writing, DevRel, and UX Design"
+      "id": "game-publishing",
+      "name": "Game Publishing Agent",
+      "file": "agents/07-game-publishing.md",
+      "description": "Expert in game publishing, platforms, monetization, marketing, and post-launch support."
     }
   ],
   "commands": [
     {
-      "id": "learn",
-      "name": "Start Learning Path",
+      "id": "learn-gamedev",
+      "name": "Learn Game Development",
       "file": "commands/learn.md",
-      "description": "Discover and start a learning path for any of the 66 development roles"
+      "description": "Start a game development learning path tailored to your interests and experience level"
     },
     {
-      "id": "browse-role",
-      "name": "Browse All Roles",
-      "file": "commands/browse-role.md",
-      "description": "Explore all 66 available development roles and career paths"
+      "id": "explore-gamedev",
+      "name": "Explore Game Development",
+      "file": "commands/explore.md",
+      "description": "Explore game development roles, specializations, and career paths"
     },
     {
-      "id": "assess",
-      "name": "Knowledge Assessment",
-      "file": "commands/assess.md",
-      "description": "Assess your current knowledge level for any role or skill"
+      "id": "game-profile",
+      "name": "Game Dev Profile",
+      "file": "commands/profile.md",
+      "description": "Assess your game development skills and get personalized recommendations"
     },
     {
-      "id": "projects",
-      "name": "Browse Projects",
+      "id": "gamedev-projects",
+      "name": "Game Projects",
       "file": "commands/projects.md",
-      "description": "Explore hands-on projects for practical learning"
+      "description": "Browse hands-on game development projects from beginner to professional level"
     }
   ],
   "skills": [
     {
-      "id": "web-frameworks",
-      "name": "Web Frameworks & Libraries",
-      "file": "skills/web-frameworks/SKILL.md",
-      "description": "React, Vue, Angular, Next.js, Svelte, and other modern web frameworks"
+      "id": "game-engines",
+      "name": "Game Engines & Frameworks",
+      "file": "skills/game-engines/SKILL.md",
+      "description": "Master game engines: Unity, Unreal Engine, Godot, and other platforms"
     },
     {
       "id": "programming-languages",
-      "name": "Programming Languages",
-      "file": "skills/languages/SKILL.md",
-      "description": "JavaScript, TypeScript, Python, Java, Rust, Go, C++, PHP, Kotlin, Swift"
+      "name": "Game Programming Languages",
+      "file": "skills/programming-languages/SKILL.md",
+      "description": "C#, C++, GDScript, and other game programming languages"
     },
     {
-      "id": "infrastructure-tools",
-      "name": "Infrastructure & DevOps Tools",
-      "file": "skills/infrastructure/SKILL.md",
-      "description": "Docker, Kubernetes, Terraform, AWS, Cloudflare, Linux administration"
+      "id": "graphics-rendering",
+      "name": "Graphics & Rendering",
+      "file": "skills/graphics-rendering/SKILL.md",
+      "description": "3D graphics, shaders, VFX, lighting, and rendering techniques"
     },
     {
-      "id": "data-ai-tools",
-      "name": "Data & AI Technologies",
-      "file": "skills/data-ai/SKILL.md",
-      "description": "Machine Learning, Deep Learning, Data Engineering, MLOps, AI frameworks"
+      "id": "audio-systems",
+      "name": "Audio & Sound Systems",
+      "file": "skills/audio-systems/SKILL.md",
+      "description": "Game audio, music systems, spatial audio, and sound implementation"
     },
     {
-      "id": "security-practices",
-      "name": "Security & Quality Practices",
-      "file": "skills/security/SKILL.md",
-      "description": "Cybersecurity, code review, testing frameworks, security best practices"
+      "id": "networking-servers",
+      "name": "Networking & Game Servers",
+      "file": "skills/networking-servers/SKILL.md",
+      "description": "Multiplayer systems, netcode, synchronization, and dedicated servers"
     },
     {
-      "id": "professional-skills",
-      "name": "Professional Development Skills",
-      "file": "skills/professional/SKILL.md",
-      "description": "Product Management, Team Leadership, Technical Communication, UX/UI Design"
+      "id": "optimization-performance",
+      "name": "Optimization & Performance",
+      "file": "skills/optimization-performance/SKILL.md",
+      "description": "Performance optimization, profiling, and multi-platform support"
     },
     {
-      "id": "mobile-game-skills",
-      "name": "Mobile & Game Development",
-      "file": "skills/mobile-game/SKILL.md",
-      "description": "iOS, Android, Flutter, React Native, Game engines, Server-side game architecture"
+      "id": "game-tools-workflows",
+      "name": "Game Development Tools & Workflows",
+      "file": "skills/game-tools-workflows/SKILL.md",
+      "description": "Development tools, asset pipelines, version control, and build systems"
     }
   ],
   "hooks": {

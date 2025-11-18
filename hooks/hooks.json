@@ -1,238 +1,205 @@
 {
   "hooks": [
     {
-      "id": "progress-tracker",
-      "name": "Learning Progress Tracker",
-      "description": "Automatically track user progress through learning paths",
+      "id": "learning-progress",
+      "name": "Game Dev Learning Progress Tracker",
+      "description": "Track game development learning milestones and progress",
       "enabled": true,
-      "triggers": ["user-starts-learning-path", "user-completes-milestone", "user-takes-assessment"],
+      "triggers": ["learning-milestone", "project-completed", "skill-improved"],
       "actions": [
         {
-          "type": "log-progress",
-          "store": "user-progress",
-          "fields": ["role", "current-module", "completion-percentage", "timestamp"]
+          "type": "track-progress",
+          "metrics": ["hours-spent", "projects-completed", "skills-learned"]
         },
         {
           "type": "generate-report",
-          "when": "weekly",
-          "content": "progress-summary"
+          "frequency": "monthly",
+          "include": ["progress-summary", "next-recommendations"]
         }
       ]
     },
     {
-      "id": "skill-achievement",
-      "name": "Skill Achievement Tracking",
-      "description": "Track and celebrate skill achievements",
+      "id": "game-portfolio",
+      "name": "Game Portfolio Builder",
+      "description": "Help build game development portfolio with completed games",
       "enabled": true,
-      "triggers": ["skill-assessment-completed", "score-improvement"],
+      "triggers": ["project-completed", "game-published"],
       "actions": [
         {
-          "type": "badge-award",
-          "conditions": {
-            "proficiency-level-reached": 75
-          },
-          "badges": ["Skill Proficiency", "Expert Badge"]
+          "type": "add-to-portfolio",
+          "include": ["project-name", "description", "skills-used", "play-link"]
         },
         {
-          "type": "achievement-notification",
-          "notify": true,
-          "message-type": "celebration"
+          "type": "optimize-portfolio",
+          "for": "industry-standards"
         }
       ]
     },
     {
-      "id": "learning-recommendations",
-      "name": "Personalized Learning Recommendations",
-      "description": "Provide AI-driven learning recommendations based on progress and gaps",
+      "id": "engine-specialization",
+      "name": "Engine Specialization Tracking",
+      "description": "Track expertise in specific engines (Unity, Unreal, Godot)",
       "enabled": true,
-      "triggers": ["assessment-completed", "learning-goal-reached", "skill-gap-identified"],
+      "triggers": ["engine-selected", "project-completed", "skill-assessment"],
       "actions": [
         {
-          "type": "analyze-learning-gaps",
-          "use-agent": "professional-development-advisor"
+          "type": "track-engine-expertise",
+          "engines": ["unity", "unreal-engine", "godot"]
         },
         {
-          "type": "recommend-resources",
-          "priority": "knowledge-gaps"
-        },
-        {
-          "type": "suggest-projects",
-          "difficulty": "next-level"
-        }
-      ]
-    },
-    {
-      "id": "project-milestone-tracker",
-      "name": "Project Milestone Tracking",
-      "description": "Track and celebrate project milestones and completions",
-      "enabled": true,
-      "triggers": ["project-started", "milestone-completed", "project-submitted"],
-      "actions": [
-        {
-          "type": "milestone-validation",
-          "check-requirements": true
-        },
-        {
-          "type": "portfolio-update",
-          "auto-add-to-portfolio": true
-        },
-        {
-          "type": "generate-certificate",
-          "when": "project-complete",
-          "include": ["project-name", "skills-demonstrated", "date-completed"]
+          "type": "recommend-next-engine",
+          "based-on": "skill-gaps"
         }
       ]
     },
     {
       "id": "role-progression",
-      "name": "Career Role Progression",
-      "description": "Track progression toward target roles",
+      "name": "Game Dev Role Progression",
+      "description": "Track progression toward game development specialization",
       "enabled": true,
-      "triggers": ["role-selected", "skill-improvement", "assessment-completed"],
+      "triggers": ["specialization-selected", "skill-improved"],
       "actions": [
         {
           "type": "calculate-readiness",
           "role-specific": true,
-          "factors": ["skills-acquired", "projects-completed", "assessment-scores"]
+          "factors": ["skills", "projects", "experience-hours"]
         },
         {
-          "type": "role-readiness-report",
-          "frequency": "monthly",
-          "include": [
-            "completion-percentage",
-            "remaining-skills",
-            "estimated-timeline",
-            "recommended-next-steps"
-          ]
+          "type": "job-market-insights",
+          "role": "specialization",
+          "include": ["salary-range", "demand", "companies"]
         }
       ]
     },
     {
-      "id": "community-engagement",
-      "name": "Community Engagement Tracking",
-      "description": "Track networking and community participation",
+      "id": "community-networking",
+      "name": "Game Dev Community Networking",
+      "description": "Connect with game developers and communities",
       "enabled": true,
-      "triggers": ["project-shared", "assessment-completed", "learning-milestone"],
+      "triggers": ["specialization-selected", "portfolio-updated"],
       "actions": [
         {
-          "type": "suggest-communities",
-          "based-on": "current-role"
-        },
-        {
-          "type": "find-mentors",
-          "in-communities": "relevant-communities",
-          "skill-match": true
+          "type": "find-communities",
+          "platforms": ["discord", "reddit", "game-jams"],
+          "filter-by": "specialization"
         },
         {
           "type": "suggest-networking",
-          "event-type": ["conferences", "meetups", "workshops"]
+          "events": ["game-jams", "conferences", "meetups"]
+        },
+        {
+          "type": "find-mentors",
+          "specialization-match": true
         }
       ]
     },
     {
-      "id": "knowledge-decay-prevention",
-      "name": "Knowledge Reinforcement",
-      "description": "Suggest review of previously learned material to prevent knowledge decay",
+      "id": "project-roadmap",
+      "name": "Project Learning Roadmap",
+      "description": "Personalized game project progression path",
       "enabled": true,
-      "triggers": ["time-since-learning-exceeds", "knowledge-decay-likely"],
+      "triggers": ["specialization-selected", "project-completed"],
       "actions": [
         {
-          "type": "identify-review-topics",
-          "time-threshold-days": 30
+          "type": "create-project-path",
+          "sequence": ["beginner", "intermediate", "advanced", "professional"]
         },
         {
-          "type": "suggest-review-projects",
-          "difficulty": "same-as-original"
-        },
-        {
-          "type": "micro-assessments",
-          "type": "spaced-repetition",
-          "frequency": "weekly"
+          "type": "recommend-project",
+          "difficulty": "next-level",
+          "specialization": "user-specialization"
         }
       ]
     },
     {
-      "id": "agent-orchestration",
-      "name": "Intelligent Agent Invocation",
-      "description": "Automatically invoke appropriate agents based on user context",
+      "id": "game-jam-readiness",
+      "name": "Game Jam Preparation",
+      "description": "Prepare for game jams and rapid development",
       "enabled": true,
-      "triggers": ["user-query", "learning-phase-change", "skill-gap-detected"],
+      "triggers": ["game-jam-announced", "skill-level-reached"],
       "actions": [
         {
-          "type": "route-to-agent",
-          "decision-tree": {
-            "web-development-topics": "web-development-specialist",
-            "infrastructure-topics": "infrastructure-devops-engineer",
-            "data-ai-topics": "data-ai-specialist",
-            "architecture-topics": "architecture-system-design-expert",
-            "mobile-game-topics": "mobile-game-developer",
-            "security-topics": "security-quality-specialist",
-            "career-topics": "professional-development-advisor"
-          }
+          "type": "suggest-jam-theme",
+          "based-on": "skills-and-experience"
+        },
+        {
+          "type": "team-finder",
+          "find": "jam-team",
+          "specialization": "needed-roles"
+        },
+        {
+          "type": "checklist",
+          "content": "jam-preparation"
         }
       ]
     },
     {
-      "id": "performance-analytics",
-      "name": "Learning Performance Analytics",
-      "description": "Analyze and provide insights on learning effectiveness",
+      "id": "publishing-readiness",
+      "name": "Game Publishing Checklist",
+      "description": "Prepare game for publishing to platforms",
       "enabled": true,
-      "triggers": ["weekly", "monthly"],
+      "triggers": ["game-complete", "polish-ready"],
       "actions": [
         {
-          "type": "calculate-metrics",
-          "metrics": [
-            "learning-velocity",
-            "skill-acquisition-rate",
-            "project-completion-rate",
-            "assessment-improvement-trend"
-          ]
+          "type": "generate-checklist",
+          "include": ["certification-requirements", "store-guidelines", "optimization"]
         },
         {
-          "type": "generate-analytics-report",
-          "frequency": "monthly",
-          "visualizations": ["charts", "graphs", "trends"]
-        },
-        {
-          "type": "predict-timeline",
-          "predict": "estimated-role-readiness-date"
+          "type": "platform-guide",
+          "platforms": ["steam", "epic", "console", "mobile"],
+          "language": "step-by-step"
         }
       ]
     },
     {
-      "id": "interview-preparation",
-      "name": "Job Interview Preparation",
-      "description": "Prepare for interviews for target roles",
+      "id": "performance-optimization-guide",
+      "name": "Performance Optimization Assistant",
+      "description": "Guide through game optimization process",
       "enabled": true,
-      "triggers": ["role-proficiency-reached", "interview-requested"],
+      "triggers": ["optimization-started", "performance-issue"],
       "actions": [
         {
-          "type": "generate-interview-guide",
-          "role-specific": true,
-          "include": [
-            "common-interview-questions",
-            "system-design-practice",
-            "behavioral-scenarios",
-            "project-discussion-points"
-          ]
+          "type": "profiling-guide",
+          "target-platform": "game-platform"
         },
         {
-          "type": "mock-interview",
-          "difficulty": "role-realistic"
+          "type": "optimization-techniques",
+          "specialized-for": "target-hardware"
         },
         {
-          "type": "resume-tips",
-          "optimize-for": "target-role"
+          "type": "benchmark-tracking",
+          "metrics": ["fps", "memory", "loading-time"]
+        }
+      ]
+    },
+    {
+      "id": "industry-insights",
+      "name": "Game Dev Industry Insights",
+      "description": "Stay updated on game development industry trends",
+      "enabled": true,
+      "triggers": ["monthly", "quarterly"],
+      "actions": [
+        {
+          "type": "trend-report",
+          "topics": ["technology-trends", "market-analysis", "best-practices"]
+        },
+        {
+          "type": "tool-updates",
+          "engines": ["unity", "unreal", "godot"],
+          "include": ["new-features", "deprecations"]
+        },
+        {
+          "type": "job-market-report",
+          "role-specialization": "user-role"
         }
       ]
     }
   ],
   "global-settings": {
     "notifications-enabled": true,
-    "auto-recommendations": true,
     "progress-tracking": true,
-    "portfolio-enabled": true,
-    "community-integration": true,
-    "agent-auto-routing": true
+    "portfolio-building": true,
+    "community-networking": true,
+    "industry-updates": true
   }
 }
