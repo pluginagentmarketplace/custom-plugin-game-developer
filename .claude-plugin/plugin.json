@@ -1,0 +1,152 @@
+{
+  "name": "developer-roadmap-plugin",
+  "version": "1.0.0",
+  "title": "Complete Developer Roadmap Plugin - 66 Roles & Career Paths",
+  "description": "Comprehensive learning system based on kamranahmedse/developer-roadmap with 66 different development roles, 7 specialized agents, and advanced skill tracking. Covers all career paths: Frontend, Backend, DevOps, Data/AI, Mobile, Game Dev, Security, Architecture, and more.",
+  "author": {
+    "name": "Developer Roadmap Plugin Team",
+    "url": "https://github.com/kamranahmedse/developer-roadmap"
+  },
+  "keywords": [
+    "developer-roadmap",
+    "career-path",
+    "learning",
+    "web-development",
+    "backend",
+    "frontend",
+    "devops",
+    "data-engineering",
+    "machine-learning",
+    "mobile-development",
+    "game-development",
+    "cybersecurity",
+    "system-design",
+    "66-roles"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pluginagentmarketplace/custom-plugin-game-developer"
+  },
+  "agents": [
+    {
+      "id": "web-development-specialist",
+      "name": "Web Development Specialist",
+      "file": "agents/01-web-development-specialist.md",
+      "description": "Expert in all web development roles: Frontend, Backend, Full Stack, and framework-specific paths (React, Vue, Angular, Next.js, Node.js, Laravel, ASP.NET Core, etc.)"
+    },
+    {
+      "id": "infrastructure-devops-engineer",
+      "name": "Infrastructure & DevOps Engineer",
+      "file": "agents/02-infrastructure-devops-engineer.md",
+      "description": "Specialist in DevOps, containerization (Docker), orchestration (Kubernetes), Infrastructure as Code (Terraform), cloud platforms (AWS), and Linux systems"
+    },
+    {
+      "id": "data-ai-specialist",
+      "name": "Data & AI Specialist",
+      "file": "agents/03-data-ai-specialist.md",
+      "description": "Expert in Machine Learning, AI Engineering, Data Engineering, Data Analysis, BI, MLOps, and AI-based development patterns"
+    },
+    {
+      "id": "architecture-system-design-expert",
+      "name": "Architecture & System Design Expert",
+      "file": "agents/04-architecture-system-design-expert.md",
+      "description": "Specialist in software architecture, system design, design patterns, API design, scalability, and enterprise architecture principles"
+    },
+    {
+      "id": "mobile-game-developer",
+      "name": "Mobile & Game Developer",
+      "file": "agents/05-mobile-game-developer.md",
+      "description": "Expert in mobile development (Android, iOS, React Native, Flutter) and game development (Client-side, Server-side game architecture)"
+    },
+    {
+      "id": "security-quality-specialist",
+      "name": "Security & Quality Specialist",
+      "file": "agents/06-security-quality-specialist.md",
+      "description": "Expert in cybersecurity, QA/Testing, code review practices, security best practices, and compliance frameworks"
+    },
+    {
+      "id": "professional-development-advisor",
+      "name": "Professional Development Advisor",
+      "file": "agents/07-professional-development-advisor.md",
+      "description": "Specialist in career development roles: Product Management, Engineering Management, Technical Writing, DevRel, and UX Design"
+    }
+  ],
+  "commands": [
+    {
+      "id": "learn",
+      "name": "Start Learning Path",
+      "file": "commands/learn.md",
+      "description": "Discover and start a learning path for any of the 66 development roles"
+    },
+    {
+      "id": "browse-role",
+      "name": "Browse All Roles",
+      "file": "commands/browse-role.md",
+      "description": "Explore all 66 available development roles and career paths"
+    },
+    {
+      "id": "assess",
+      "name": "Knowledge Assessment",
+      "file": "commands/assess.md",
+      "description": "Assess your current knowledge level for any role or skill"
+    },
+    {
+      "id": "projects",
+      "name": "Browse Projects",
+      "file": "commands/projects.md",
+      "description": "Explore hands-on projects for practical learning"
+    }
+  ],
+  "skills": [
+    {
+      "id": "web-frameworks",
+      "name": "Web Frameworks & Libraries",
+      "file": "skills/web-frameworks/SKILL.md",
+      "description": "React, Vue, Angular, Next.js, Svelte, and other modern web frameworks"
+    },
+    {
+      "id": "programming-languages",
+      "name": "Programming Languages",
+      "file": "skills/languages/SKILL.md",
+      "description": "JavaScript, TypeScript, Python, Java, Rust, Go, C++, PHP, Kotlin, Swift"
+    },
+    {
+      "id": "infrastructure-tools",
+      "name": "Infrastructure & DevOps Tools",
+      "file": "skills/infrastructure/SKILL.md",
+      "description": "Docker, Kubernetes, Terraform, AWS, Cloudflare, Linux administration"
+    },
+    {
+      "id": "data-ai-tools",
+      "name": "Data & AI Technologies",
+      "file": "skills/data-ai/SKILL.md",
+      "description": "Machine Learning, Deep Learning, Data Engineering, MLOps, AI frameworks"
+    },
+    {
+      "id": "security-practices",
+      "name": "Security & Quality Practices",
+      "file": "skills/security/SKILL.md",
+      "description": "Cybersecurity, code review, testing frameworks, security best practices"
+    },
+    {
+      "id": "professional-skills",
+      "name": "Professional Development Skills",
+      "file": "skills/professional/SKILL.md",
+      "description": "Product Management, Team Leadership, Technical Communication, UX/UI Design"
+    },
+    {
+      "id": "mobile-game-skills",
+      "name": "Mobile & Game Development",
+      "file": "skills/mobile-game/SKILL.md",
+      "description": "iOS, Android, Flutter, React Native, Game engines, Server-side game architecture"
+    }
+  ],
+  "hooks": {
+    "file": "hooks/hooks.json"
+  },
+  "documentation": {
+    "readme": "README.md",
+    "architecture": "ARCHITECTURE.md",
+    "learning-paths": "LEARNING-PATHS.md"
+  }
+}

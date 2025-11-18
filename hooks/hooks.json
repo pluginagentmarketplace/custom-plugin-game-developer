@@ -1,0 +1,238 @@
+{
+  "hooks": [
+    {
+      "id": "progress-tracker",
+      "name": "Learning Progress Tracker",
+      "description": "Automatically track user progress through learning paths",
+      "enabled": true,
+      "triggers": ["user-starts-learning-path", "user-completes-milestone", "user-takes-assessment"],
+      "actions": [
+        {
+          "type": "log-progress",
+          "store": "user-progress",
+          "fields": ["role", "current-module", "completion-percentage", "timestamp"]
+        },
+        {
+          "type": "generate-report",
+          "when": "weekly",
+          "content": "progress-summary"
+        }
+      ]
+    },
+    {
+      "id": "skill-achievement",
+      "name": "Skill Achievement Tracking",
+      "description": "Track and celebrate skill achievements",
+      "enabled": true,
+      "triggers": ["skill-assessment-completed", "score-improvement"],
+      "actions": [
+        {
+          "type": "badge-award",
+          "conditions": {
+            "proficiency-level-reached": 75
+          },
+          "badges": ["Skill Proficiency", "Expert Badge"]
+        },
+        {
+          "type": "achievement-notification",
+          "notify": true,
+          "message-type": "celebration"
+        }
+      ]
+    },
+    {
+      "id": "learning-recommendations",
+      "name": "Personalized Learning Recommendations",
+      "description": "Provide AI-driven learning recommendations based on progress and gaps",
+      "enabled": true,
+      "triggers": ["assessment-completed", "learning-goal-reached", "skill-gap-identified"],
+      "actions": [
+        {
+          "type": "analyze-learning-gaps",
+          "use-agent": "professional-development-advisor"
+        },
+        {
+          "type": "recommend-resources",
+          "priority": "knowledge-gaps"
+        },
+        {
+          "type": "suggest-projects",
+          "difficulty": "next-level"
+        }
+      ]
+    },
+    {
+      "id": "project-milestone-tracker",
+      "name": "Project Milestone Tracking",
+      "description": "Track and celebrate project milestones and completions",
+      "enabled": true,
+      "triggers": ["project-started", "milestone-completed", "project-submitted"],
+      "actions": [
+        {
+          "type": "milestone-validation",
+          "check-requirements": true
+        },
+        {
+          "type": "portfolio-update",
+          "auto-add-to-portfolio": true
+        },
+        {
+          "type": "generate-certificate",
+          "when": "project-complete",
+          "include": ["project-name", "skills-demonstrated", "date-completed"]
+        }
+      ]
+    },
+    {
+      "id": "role-progression",
+      "name": "Career Role Progression",
+      "description": "Track progression toward target roles",
+      "enabled": true,
+      "triggers": ["role-selected", "skill-improvement", "assessment-completed"],
+      "actions": [
+        {
+          "type": "calculate-readiness",
+          "role-specific": true,
+          "factors": ["skills-acquired", "projects-completed", "assessment-scores"]
+        },
+        {
+          "type": "role-readiness-report",
+          "frequency": "monthly",
+          "include": [
+            "completion-percentage",
+            "remaining-skills",
+            "estimated-timeline",
+            "recommended-next-steps"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "community-engagement",
+      "name": "Community Engagement Tracking",
+      "description": "Track networking and community participation",
+      "enabled": true,
+      "triggers": ["project-shared", "assessment-completed", "learning-milestone"],
+      "actions": [
+        {
+          "type": "suggest-communities",
+          "based-on": "current-role"
+        },
+        {
+          "type": "find-mentors",
+          "in-communities": "relevant-communities",
+          "skill-match": true
+        },
+        {
+          "type": "suggest-networking",
+          "event-type": ["conferences", "meetups", "workshops"]
+        }
+      ]
+    },
+    {
+      "id": "knowledge-decay-prevention",
+      "name": "Knowledge Reinforcement",
+      "description": "Suggest review of previously learned material to prevent knowledge decay",
+      "enabled": true,
+      "triggers": ["time-since-learning-exceeds", "knowledge-decay-likely"],
+      "actions": [
+        {
+          "type": "identify-review-topics",
+          "time-threshold-days": 30
+        },
+        {
+          "type": "suggest-review-projects",
+          "difficulty": "same-as-original"
+        },
+        {
+          "type": "micro-assessments",
+          "type": "spaced-repetition",
+          "frequency": "weekly"
+        }
+      ]
+    },
+    {
+      "id": "agent-orchestration",
+      "name": "Intelligent Agent Invocation",
+      "description": "Automatically invoke appropriate agents based on user context",
+      "enabled": true,
+      "triggers": ["user-query", "learning-phase-change", "skill-gap-detected"],
+      "actions": [
+        {
+          "type": "route-to-agent",
+          "decision-tree": {
+            "web-development-topics": "web-development-specialist",
+            "infrastructure-topics": "infrastructure-devops-engineer",
+            "data-ai-topics": "data-ai-specialist",
+            "architecture-topics": "architecture-system-design-expert",
+            "mobile-game-topics": "mobile-game-developer",
+            "security-topics": "security-quality-specialist",
+            "career-topics": "professional-development-advisor"
+          }
+        }
+      ]
+    },
+    {
+      "id": "performance-analytics",
+      "name": "Learning Performance Analytics",
+      "description": "Analyze and provide insights on learning effectiveness",
+      "enabled": true,
+      "triggers": ["weekly", "monthly"],
+      "actions": [
+        {
+          "type": "calculate-metrics",
+          "metrics": [
+            "learning-velocity",
+            "skill-acquisition-rate",
+            "project-completion-rate",
+            "assessment-improvement-trend"
+          ]
+        },
+        {
+          "type": "generate-analytics-report",
+          "frequency": "monthly",
+          "visualizations": ["charts", "graphs", "trends"]
+        },
+        {
+          "type": "predict-timeline",
+          "predict": "estimated-role-readiness-date"
+        }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "name": "Job Interview Preparation",
+      "description": "Prepare for interviews for target roles",
+      "enabled": true,
+      "triggers": ["role-proficiency-reached", "interview-requested"],
+      "actions": [
+        {
+          "type": "generate-interview-guide",
+          "role-specific": true,
+          "include": [
+            "common-interview-questions",
+            "system-design-practice",
+            "behavioral-scenarios",
+            "project-discussion-points"
+          ]
+        },
+        {
+          "type": "mock-interview",
+          "difficulty": "role-realistic"
+        },
+        {
+          "type": "resume-tips",
+          "optimize-for": "target-role"
+        }
+      ]
+    }
+  ],
+  "global-settings": {
+    "notifications-enabled": true,
+    "auto-recommendations": true,
+    "progress-tracking": true,
+    "portfolio-enabled": true,
+    "community-integration": true,
+    "agent-auto-routing": true
+  }
+}
