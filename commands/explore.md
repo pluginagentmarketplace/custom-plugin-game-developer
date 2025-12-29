@@ -1,3 +1,9 @@
+---
+name: explore
+description: gamedev - Explore Game Development
+allowed-tools: Read
+---
+
 # /explore-gamedev - Explore Game Development
 
 Discover game development careers, specializations, and paths.

@@ -1,0 +1,5 @@
+techniques:
+  - state_sync
+  - input_prediction
+  - lag_compensation
+  - rollback

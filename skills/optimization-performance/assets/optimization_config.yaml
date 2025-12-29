@@ -1,0 +1,10 @@
+areas:
+  - cpu
+  - gpu
+  - memory
+  - loading
+techniques:
+  - profiling
+  - batching
+  - lod
+  - culling

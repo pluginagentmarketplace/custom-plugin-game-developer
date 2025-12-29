@@ -1,0 +1,8 @@
+platforms:
+  - unity_cloud_build
+  - github_actions
+  - jenkins
+pipelines:
+  - build
+  - test
+  - deploy

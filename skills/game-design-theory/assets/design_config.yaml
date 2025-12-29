@@ -1,0 +1,8 @@
+elements:
+  - core_loop
+  - reward_systems
+  - difficulty_curves
+  - player_engagement
+documentation:
+  - gdd
+  - design_pillars

@@ -1,0 +1,9 @@
+models:
+  - premium
+  - free_to_play
+  - subscription
+  - ads
+features:
+  - iap
+  - battle_pass
+  - cosmetics

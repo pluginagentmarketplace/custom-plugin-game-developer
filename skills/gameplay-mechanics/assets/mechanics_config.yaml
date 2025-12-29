@@ -1,0 +1,9 @@
+types:
+  - movement
+  - combat
+  - inventory
+  - progression
+patterns:
+  - state_machine
+  - event_driven
+  - component_based

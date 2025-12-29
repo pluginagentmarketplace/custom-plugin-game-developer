@@ -1,261 +1,266 @@
-# 🎮 Game Developer Plugin for Claude Code
+<div align="center">
 
-Master game development with comprehensive learning paths, 7 expert agents, 7 skill categories, and real-world projects.
+<!-- Animated Typing Banner -->
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=2E9EF7&center=true&vCenter=true&multiline=true&repeat=true&width=600&height=100&lines=Game+Developer+Assistant;7+Agents+%7C+21+Skills;Claude+Code+Plugin" alt="Game Developer Assistant" />
 
-## 🚀 Quick Start
+<br/>
 
-```bash
-# Load the plugin
-claude code ./custom-plugin-game-developer
-```
+<!-- Badge Row 1: Status Badges -->
+[![Version](https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge)](https://github.com/pluginagentmarketplace/custom-plugin-game-developer/releases)
+[![License](https://img.shields.io/badge/License-Custom-yellow?style=for-the-badge)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Production-brightgreen?style=for-the-badge)](#)
+[![SASMP](https://img.shields.io/badge/SASMP-v1.3.0-blueviolet?style=for-the-badge)](#)
 
-### Available Commands
+<!-- Badge Row 2: Content Badges -->
+[![Agents](https://img.shields.io/badge/Agents-7-orange?style=flat-square&logo=robot)](#-agents)
+[![Skills](https://img.shields.io/badge/Skills-21-purple?style=flat-square&logo=lightning)](#-skills)
+[![Commands](https://img.shields.io/badge/Commands-4-green?style=flat-square&logo=terminal)](#-commands)
 
-- **`/learn-gamedev`** - Start personalized game dev learning path
-- **`/explore-gamedev`** - Explore game development roles and specializations
-- **`/game-profile`** - Assess your game dev skills
-- **`/gamedev-projects`** - Find hands-on game projects
+<br/>
 
-## 🎯 What's Included
-
-### 7 Expert Agents (Working in Parallel)
-
-1. **Game Designer** - Mechanics, level design, player experience, balance
-2. **Game Programmer** - C#, C++, engine systems, gameplay code
-3. **Graphics & Rendering** - Shaders, VFX, lighting, optimization
-4. **Audio & Sound Design** - Music, sound effects, spatial audio
-5. **Networking & Multiplayer** - Netcode, servers, synchronization
-6. **Tools & Pipeline** - Asset management, build systems, automation
-7. **Game Publishing** - Platforms, monetization, live ops
-
-### 21 Comprehensive Skill Modules
-
-**Design & Theory**: Game Design Theory, Level Design, Gameplay Mechanics
-**Programming**: Programming Languages, Programming Architecture, Memory Management
-**Graphics**: Graphics Rendering, Shader Techniques, Particle Systems
-**Audio**: Audio Sound Design, DAW & Music Composition
-**Networking**: Networking Protocols, Synchronization Algorithms, Game Servers
-**Tools & Automation**: CI/CD Automation, Asset Optimization
-**Publishing & Business**: Publishing Platforms, Monetization Systems
-
-Each skill module includes:
-- Comprehensive theoretical foundations
-- Practical implementation examples
-- Code examples and best practices
-- Real-world application scenarios
-- Learning progression (Beginner → Advanced)
-- Tool recommendations
-- Related agents and resources
-
-### 4 Powerful Commands
-
-| Command | Purpose |
-|---------|---------|
-| `/learn-gamedev` | Start learning based on specialization |
-| `/explore-gamedev` | Browse roles, engines, topics |
-| `/game-profile` | Assess skills, identify gaps |
-| `/gamedev-projects` | Find projects matching your level |
-
-### 10 Automation Hooks
-
-- Learning progress tracking
-- Portfolio building
-- Engine specialization tracking
-- Role progression monitoring
-- Community networking
-- Project roadmap generation
-- Game jam preparation
-- Publishing checklist
-- Performance optimization guidance
-- Industry insights & trends
-
-## 📚 Learning Paths (8-18 months)
-
-### Game Designer Path (12 months)
-- Game mechanics and balance
-- Level design and environments
-- Gameplay loops and progression
-- Player experience and UX
-- Design documentation
-
-### Game Programmer Path (14 months)
-- Language mastery (C# or C++)
-- Engine fundamentals
-- Gameplay systems
-- Performance optimization
-- Architecture patterns
-
-### Graphics Programmer Path (12 months)
-- 3D graphics fundamentals
-- Shader programming
-- VFX systems
-- Rendering optimization
-- Tools development
-
-### Audio Specialist Path (10 months)
-- Audio programming
-- Sound design
-- Music composition
-- Spatial audio
-- Voice systems
-
-### Network Programmer Path (14 months)
-- Network protocols
-- Multiplayer systems
-- Server architecture
-- Synchronization
-- Anti-cheat systems
-
-### Tools Programmer Path (12 months)
-- Build automation
-- Asset pipelines
-- Tool development
-- CI/CD systems
-- Team workflows
-
-### Game Producer Path (12 months)
-- Game design fundamentals
-- Publishing processes
-- Monetization strategies
-- Team management
-- Live operations
-
-## 🏗️ Plugin Architecture
-
-```
-custom-plugin-game-developer/
-├── .claude-plugin/
-│   └── plugin.json ..................... Plugin manifest
-├── agents/ ............................ 7 Game Dev Agents
-│   ├── 01-game-designer.md
-│   ├── 02-game-programmer.md
-│   ├── 03-graphics-rendering.md
-│   ├── 04-audio-sound-design.md
-│   ├── 05-networking-multiplayer.md
-│   ├── 06-tools-pipeline.md
-│   └── 07-game-publishing.md
-├── commands/ .......................... 4 Slash Commands
-│   ├── learn.md
-│   ├── explore.md
-│   ├── profile.md
-│   └── projects.md
-├── skills/ ........................... 7 Skill Categories
-│   ├── game-engines/SKILL.md
-│   ├── programming-languages/SKILL.md
-│   ├── graphics-rendering/SKILL.md
-│   ├── audio-systems/SKILL.md
-│   ├── networking-servers/SKILL.md
-│   ├── optimization-performance/SKILL.md
-│   └── game-tools-workflows/SKILL.md
-├── hooks/
-│   └── hooks.json ..................... 10 Automation Hooks
-├── README.md ......................... This file
-├── ARCHITECTURE.md ................... System design
-└── LEARNING-PATHS.md ................. Detailed paths
-```
-
-## 🎓 How to Use
-
-### Step 1: Start Learning
-
-```
-/learn-gamedev
-```
-
-Choose specialization and engine, get personalized learning path.
-
-### Step 2: Explore Options
-
-```
-/explore-gamedev
-```
-
-Browse roles, engines, and industry specializations.
-
-### Step 3: Assess Your Skills
-
-```
-/game-profile
-```
-
-Evaluate knowledge, identify gaps, get recommendations.
-
-### Step 4: Build Portfolio
-
-```
-/gamedev-projects
-```
-
-Find projects matching your skill level (beginner→professional).
-
-## 🎮 Supported Engines
-
-- **Unity** (C#) - Most popular, best for indie
-- **Unreal Engine** (C++) - AAA standard, high-end graphics
-- **Godot** (GDScript) - Open source, beginner-friendly
-
-## 🌟 Key Features
-
-### Expert Guidance
-✅ **7 Specialized Agents** - Parallel expert guidance in every game dev discipline
-✅ **192-204 Line Agents** - Comprehensive expertise areas with detailed methodologies
-✅ **12+ Capabilities Per Agent** - Deep specialization in key competencies
-
-### Learning & Development
-✅ **Comprehensive Skills** - 21 detailed skill modules with 400+ lines each
-✅ **8-18 Month Learning Paths** - Complete roadmaps from beginner to professional
-✅ **500+ Line Command Guides** - Detailed workflows with examples for each specialization
-✅ **Personalized Learning** - Tailored paths matching your role and engine choice
-✅ **Progress Tracking** - Monitor milestones, completed projects, and advancement
-
-### Practical Project-Based Learning
-✅ **Real-World Projects** - Portfolio-building projects from beginner to professional
-✅ **Game Jam Ready** - Complete preparation guides and team networking
-✅ **Portfolio Building** - Showcase your best work and build game development credentials
-✅ **Step-by-Step Walkthroughs** - Detailed project guides with milestones
-
-### Community & Career
-✅ **Industry Insights** - Stay updated on trends and best practices
-✅ **Community Networking** - Connect with game developers and find mentors
-✅ **Publishing Guide** - Complete step-by-step launch checklist for all platforms
-✅ **Career Roadmaps** - Clear progression from junior to senior roles
-✅ **Professional Standards** - Enterprise-quality practices and workflows
-
-### Technical Depth
-✅ **Multiple Engines** - Unity, Unreal Engine, and Godot expertise
-✅ **Advanced Techniques** - Shaders, netcode, audio middleware, CI/CD automation
-✅ **Optimization Focus** - Performance profiling, memory management, rendering optimization
-✅ **Architecture Patterns** - Clean code, design patterns, scalable systems
-✅ **Tools & Infrastructure** - Build systems, asset pipelines, automation
-
-## 🎯 Perfect For
-
-- Aspiring game developers (all levels)
-- Career transitions into game dev
-- Skill improvement and specialization
-- Portfolio building
-- Game jam participation
-- Indie game development
-- Team training and onboarding
-
-## 📖 Documentation
-
-- **README.md** - Plugin overview (this file)
-- **ARCHITECTURE.md** - Technical system design
-- **LEARNING-PATHS.md** - Detailed learning paths for each role
-
-## 🚀 Getting Started Now
-
-1. Load plugin: `claude code ./custom-plugin-game-developer`
-2. Explore: `/explore-gamedev`
-3. Choose: `/learn-gamedev [specialization] [engine]`
-4. Assess: `/game-profile`
-5. Build: `/gamedev-projects`
+<!-- Quick CTA Row -->
+[📦 **Install Now**](#-quick-start) · [🤖 **Explore Agents**](#-agents) · [📖 **Documentation**](#-documentation) · [⭐ **Star this repo**](https://github.com/pluginagentmarketplace/custom-plugin-game-developer)
 
 ---
 
-**Start your game development journey today!** 🎮✨
+### What is this?
 
-Choose your path, leverage 7 expert agents, and master game development through comprehensive learning and hands-on projects.
+> **Game Developer Assistant** is a Claude Code plugin with **7 agents** and **21 skills** for game developer development.
 
-Made for game developers, by developers.
+</div>
+
+---
+
+## 📑 Table of Contents
+
+<details>
+<summary>Click to expand</summary>
+
+- [Quick Start](#-quick-start)
+- [Features](#-features)
+- [Agents](#-agents)
+- [Skills](#-skills)
+- [Commands](#-commands)
+- [Documentation](#-documentation)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+</details>
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Claude Code CLI v2.0.27+
+- Active Claude subscription
+
+### Installation (Choose One)
+
+<details open>
+<summary><strong>Option 1: From Marketplace (Recommended)</strong></summary>
+
+```bash
+# Step 1️⃣ Add the marketplace
+/plugin add marketplace pluginagentmarketplace/custom-plugin-game-developer
+
+# Step 2️⃣ Install the plugin
+/plugin install custom-plugin-game-developer@pluginagentmarketplace-game-developer
+
+# Step 3️⃣ Restart Claude Code
+# Close and reopen your terminal/IDE
+```
+
+</details>
+
+<details>
+<summary><strong>Option 2: Local Installation</strong></summary>
+
+```bash
+# Clone the repository
+git clone https://github.com/pluginagentmarketplace/custom-plugin-game-developer.git
+cd custom-plugin-game-developer
+
+# Load locally
+/plugin load .
+
+# Restart Claude Code
+```
+
+</details>
+
+### ✅ Verify Installation
+
+After restart, you should see these agents:
+
+```
+custom-plugin-game-developer:05-networking-multiplayer
+custom-plugin-game-developer:01-game-designer
+custom-plugin-game-developer:03-graphics-rendering
+custom-plugin-game-developer:04-audio-sound-design
+custom-plugin-game-developer:06-tools-pipeline
+... and 2 more
+```
+
+---
+
+## ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| 🤖 **7 Agents** | Specialized AI agents for game developer tasks |
+| 🛠️ **21 Skills** | Reusable capabilities with Golden Format |
+| ⌨️ **4 Commands** | Quick slash commands |
+| 🔄 **SASMP v1.3.0** | Full protocol compliance |
+
+---
+
+## 🤖 Agents
+
+### 7 Specialized Agents
+
+| # | Agent | Purpose |
+|---|-------|---------|
+| 1 | **05-networking-multiplayer** | Expert in multiplayer systems, netcode, synchronization algo |
+| 2 | **01-game-designer** | Expert in game design, mechanics, level design, player psych |
+| 3 | **03-graphics-rendering** | Expert in 3D graphics, shader programming, visual effects, a |
+| 4 | **04-audio-sound-design** | Expert in game audio programming, sound design, music compos |
+| 5 | **06-tools-pipeline** | Expert in game development tools, asset pipelines, build aut |
+| 6 | **02-game-programmer** | Expert game programmer specializing in C# (Unity), C++ (Unre |
+| 7 | **07-game-publishing** | Expert in game publishing, platform deployment, monetization |
+
+---
+
+## 🛠️ Skills
+
+### Available Skills
+
+| Skill | Description | Invoke |
+|-------|-------------|--------|
+| `asset-optimization` | Asset pipeline optimization, compression, streaming, and res | `Skill("custom-plugin-game-developer:asset-optimization")` |
+| `synchronization-algorithms` | Network synchronization, lag compensation, client prediction | `Skill("custom-plugin-game-developer:synchronization-algorithms")` |
+| `game-design-theory` | Comprehensive game design theory covering mechanics, dynamic | `Skill("custom-plugin-game-developer:game-design-theory")` |
+| `monetization-systems` | Game monetization strategies, in-app purchases, battle passe | `Skill("custom-plugin-game-developer:monetization-systems")` |
+| `level-design` | Level design fundamentals, pacing, difficulty progression, e | `Skill("custom-plugin-game-developer:level-design")` |
+| `graphics-rendering` | 3D graphics, shaders, VFX, lighting, rendering optimization. | `Skill("custom-plugin-game-developer:graphics-rendering")` |
+| `shader-techniques` | Advanced shader programming, visual effects, custom material | `Skill("custom-plugin-game-developer:shader-techniques")` |
+| `audio-systems` | Game audio systems, music, spatial audio, sound effects, voi | `Skill("custom-plugin-game-developer:audio-systems")` |
+| `publishing-platforms` | Platform submission processes, certification requirements, a | `Skill("custom-plugin-game-developer:publishing-platforms")` |
+| `programming-languages` | Game programming languages - C#, C++, GDScript. Learn syntax | `Skill("custom-plugin-game-developer:programming-languages")` |
+| ... | +11 more | See skills/ directory |
+
+---
+
+## ⌨️ Commands
+
+| Command | Description |
+|---------|-------------|
+| `/explore` | gamedev - Explore Game Development |
+| `/learn` | gamedev - Personalized Game Development Learning Paths |
+| `/projects` | projects - Game Development Projects |
+| `/profile` | profile - Assess Game Development Skills |
+
+---
+
+## 📚 Documentation
+
+| Document | Description |
+|----------|-------------|
+| [CHANGELOG.md](CHANGELOG.md) | Version history |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute |
+| [LICENSE](LICENSE) | License information |
+
+---
+
+## 📁 Project Structure
+
+<details>
+<summary>Click to expand</summary>
+
+```
+custom-plugin-game-developer/
+├── 📁 .claude-plugin/
+│   ├── plugin.json
+│   └── marketplace.json
+├── 📁 agents/              # 7 agents
+├── 📁 skills/              # 21 skills (Golden Format)
+├── 📁 commands/            # 4 commands
+├── 📁 hooks/
+├── 📄 README.md
+├── 📄 CHANGELOG.md
+└── 📄 LICENSE
+```
+
+</details>
+
+---
+
+## 📅 Metadata
+
+| Field | Value |
+|-------|-------|
+| **Version** | 1.0.0 |
+| **Last Updated** | 2025-12-29 |
+| **Status** | Production Ready |
+| **SASMP** | v1.3.0 |
+| **Agents** | 7 |
+| **Skills** | 21 |
+| **Commands** | 4 |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md).
+
+1. Fork the repository
+2. Create your feature branch
+3. Follow the Golden Format for new skills
+4. Submit a pull request
+
+---
+
+## ⚠️ Security
+
+> **Important:** This repository contains third-party code and dependencies.
+>
+> - ✅ Always review code before using in production
+> - ✅ Check dependencies for known vulnerabilities
+> - ✅ Follow security best practices
+> - ✅ Report security issues privately via [Issues](../../issues)
+
+---
+
+## 📝 License
+
+Copyright © 2025 **Dr. Umit Kacar** & **Muhsin Elcicek**
+
+Custom License - See [LICENSE](LICENSE) for details.
+
+---
+
+## 👥 Contributors
+
+<table>
+<tr>
+<td align="center">
+<strong>Dr. Umit Kacar</strong><br/>
+Senior AI Researcher & Engineer
+</td>
+<td align="center">
+<strong>Muhsin Elcicek</strong><br/>
+Senior Software Architect
+</td>
+</tr>
+</table>
+
+---
+
+<div align="center">
+
+**Made with ❤️ for the Claude Code Community**
+
+[![GitHub](https://img.shields.io/badge/GitHub-pluginagentmarketplace-black?style=for-the-badge&logo=github)](https://github.com/pluginagentmarketplace)
+
+</div>

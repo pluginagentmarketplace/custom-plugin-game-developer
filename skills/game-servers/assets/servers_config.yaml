@@ -1,0 +1,8 @@
+types:
+  - authoritative
+  - relay
+  - matchmaking
+services:
+  - playfab
+  - photon
+  - mirror

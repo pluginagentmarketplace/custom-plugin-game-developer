@@ -1,0 +1,9 @@
+pipelines:
+  - forward
+  - deferred
+  - ray_tracing
+techniques:
+  - pbr
+  - ssao
+  - bloom
+  - shadows

@@ -1,0 +1,10 @@
+types:
+  - textures
+  - meshes
+  - audio
+  - animations
+techniques:
+  - compression
+  - atlasing
+  - streaming
+  - lod

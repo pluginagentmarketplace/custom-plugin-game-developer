@@ -1,0 +1,15 @@
+{
+  "name": "pluginagentmarketplace-game-developer",
+  "owner": {
+    "name": "Plugin Agent Marketplace",
+    "email": "pluginagentmarketplace@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "custom-plugin-game-developer",
+      "source": "./",
+      "description": "Claude Code plugin for game developer development",
+      "version": "1.0.0"
+    }
+  ]
+}

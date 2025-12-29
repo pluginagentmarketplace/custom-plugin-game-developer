@@ -1,3 +1,9 @@
+---
+name: profile
+description: profile - Assess Game Development Skills
+allowed-tools: Read
+---
+
 # /game-profile - Assess Game Development Skills
 
 Evaluate your game development expertise and get personalized recommendations.

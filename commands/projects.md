@@ -1,3 +1,9 @@
+---
+name: projects
+description: projects - Game Development Projects
+allowed-tools: Read
+---
+
 # /gamedev-projects - Game Development Projects
 
 Discover hands-on game development projects from beginner to professional level.

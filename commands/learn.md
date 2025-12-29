@@ -1,3 +1,9 @@
+---
+name: learn
+description: gamedev - Personalized Game Development Learning Paths
+allowed-tools: Read
+---
+
 # /learn-gamedev - Personalized Game Development Learning Paths
 
 Begin your game development journey with expert-designed learning paths tailored to your specialization, engine choice, and experience level.

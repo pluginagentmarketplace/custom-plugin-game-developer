@@ -238,5 +238,6 @@
     "readme": "README.md",
     "architecture": "ARCHITECTURE.md",
     "learning-paths": "LEARNING-PATHS.md"
-  }
+  },
+  "license": "SEE LICENSE IN LICENSE"
 }

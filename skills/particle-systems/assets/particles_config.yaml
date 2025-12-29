@@ -1,0 +1,9 @@
+systems:
+  - shuriken
+  - niagara
+  - vfx_graph
+effects:
+  - fire
+  - smoke
+  - magic
+  - weather

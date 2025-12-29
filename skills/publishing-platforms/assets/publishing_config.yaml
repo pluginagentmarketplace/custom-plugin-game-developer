@@ -1,0 +1,9 @@
+platforms:
+  - steam
+  - epic
+  - consoles
+  - mobile
+requirements:
+  - certification
+  - ratings
+  - legal

@@ -1,0 +1,9 @@
+patterns:
+  - ecs
+  - component_based
+  - state_machine
+  - observer
+principles:
+  - solid
+  - kiss
+  - dry
