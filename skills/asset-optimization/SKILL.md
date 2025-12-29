@@ -1,6 +1,9 @@
 ---
 name: asset-optimization
 description: Asset pipeline optimization, compression, streaming, and resource management for efficient game development and delivery.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Asset Optimization

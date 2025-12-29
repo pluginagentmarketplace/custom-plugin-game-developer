@@ -1,6 +1,9 @@
 ---
 name: particle-systems
 description: Creating visual effects using particle systems, physics simulation, and post-processing for polished gameplay.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Particle Systems

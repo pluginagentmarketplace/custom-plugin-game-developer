@@ -1,6 +1,9 @@
 ---
 name: daw-music
 description: Digital Audio Workstation usage, music composition, interactive music systems, and game audio implementation.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # DAW & Music Composition

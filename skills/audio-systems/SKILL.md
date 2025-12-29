@@ -1,6 +1,9 @@
 ---
 name: audio-systems
 description: Game audio systems, music, spatial audio, sound effects, voice implementation.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Audio & Sound Systems

@@ -1,6 +1,9 @@
 ---
 name: game-programming-languages
 description: Game programming languages - C#, C++, GDScript. Learn syntax, patterns, and engine-specific idioms.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Game Programming Languages

@@ -1,6 +1,9 @@
 ---
 name: game-tools-workflows
 description: Game development tools, asset pipelines, version control, build systems, and development workflows.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Game Development Tools & Workflows

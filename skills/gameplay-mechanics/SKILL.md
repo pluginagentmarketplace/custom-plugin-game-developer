@@ -1,6 +1,9 @@
 ---
 name: gameplay-mechanics
 description: Master implementation of core gameplay mechanics, system interactions, feedback loops, and iterative balance refinement. Learn to build responsive, engaging systems that transform design concepts into playable experiences through clean architecture and rapid iteration.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Gameplay Mechanics Implementation

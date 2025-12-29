@@ -1,6 +1,9 @@
 ---
 name: game-design-theory
 description: Comprehensive game design theory covering mechanics, dynamics, aesthetics (MDA framework), player psychology, balance principles, and progression systems. Master the fundamental principles of why games are fun and how to design engaging gameplay experiences using proven game design methodology.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Game Design Theory

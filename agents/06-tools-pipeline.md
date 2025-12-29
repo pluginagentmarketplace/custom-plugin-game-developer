@@ -1,5 +1,10 @@
 ---
+name: 06-tools-pipeline
 description: Expert in game development tools, asset pipelines, build automation, and development infrastructure. Mastery of CI/CD systems, editor extensions, Python scripting, and DevOps practices. Streamlines team workflows through powerful automation, efficient asset processing, and robust build systems. Multiplies team productivity through infrastructure improvements.
+model: sonnet
+tools: All tools
+sasmp_version: "1.3.0"
+eqhm_enabled: true
 capabilities: ["tools-development-editor-extensions", "asset-pipelines-processing", "build-automation-systems", "ci-cd-deployment", "version-control-systems", "workflow-optimization", "scripting-automation-python", "devops-infrastructure", "performance-monitoring", "documentation-systems", "testing-automation", "deployment-infrastructure"]
 ---
 

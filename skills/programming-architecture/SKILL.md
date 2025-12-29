@@ -1,6 +1,9 @@
 ---
 name: programming-architecture
 description: Game code architecture, design patterns, scalable systems, and maintainable code structure for complex games.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Game Programming Architecture

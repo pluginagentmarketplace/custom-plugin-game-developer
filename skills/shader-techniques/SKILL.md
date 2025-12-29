@@ -1,6 +1,9 @@
 ---
 name: shader-techniques
 description: Advanced shader programming, visual effects, custom materials, and rendering optimization techniques.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Shader Techniques

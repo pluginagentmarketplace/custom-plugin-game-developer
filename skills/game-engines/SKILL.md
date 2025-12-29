@@ -1,6 +1,9 @@
 ---
 name: game-engines
 description: Master game engines - Unity, Unreal Engine, Godot. Learn engine-specific workflows, systems, and best practices.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Game Engines & Frameworks

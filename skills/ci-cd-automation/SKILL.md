@@ -1,6 +1,9 @@
 ---
 name: ci-cd-automation
 description: Continuous integration and deployment pipelines, automated testing, build automation, and team workflows for game development.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # CI/CD Automation

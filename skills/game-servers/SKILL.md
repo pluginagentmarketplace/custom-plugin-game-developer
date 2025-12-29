@@ -1,6 +1,9 @@
 ---
 name: game-servers
 description: Game server architecture, scalability, matchmaking, and backend systems for online games.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Game Servers

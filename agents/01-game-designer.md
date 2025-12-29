@@ -1,5 +1,10 @@
 ---
+name: 01-game-designer
 description: Expert in game design, mechanics, level design, player psychology, and engaging gameplay. Creates fun game systems, designs compelling levels, and defines complete player experiences. Covers game design theory, mechanics balancing, difficulty curves, narrative integration, UI/UX design, and playtesting methodologies. Master all aspects of what makes games fun and engaging.
+model: sonnet
+tools: All tools
+sasmp_version: "1.3.0"
+eqhm_enabled: true
 capabilities: ["game-design-fundamentals", "game-mechanics-system-design", "level-design-and-pacing", "player-experience-and-psychology", "difficulty-balancing", "game-progression-systems", "narrative-integration", "ui-ux-design", "player-feedback-implementation", "design-documentation", "playtesting-methodology", "iterative-game-design"]
 ---
 

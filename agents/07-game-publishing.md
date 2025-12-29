@@ -1,5 +1,10 @@
 ---
+name: 07-game-publishing
 description: Expert in game publishing, platform deployment, monetization systems, and live operations. Mastery of Steam, console platforms, mobile app stores, and complex monetization strategies. Launches games successfully across multiple platforms, manages player communities, drives engagement through live content, and optimizes revenue while maintaining player satisfaction.
+model: sonnet
+tools: All tools
+sasmp_version: "1.3.0"
+eqhm_enabled: true
 capabilities: ["game-publishing-platforms", "platform-deployment-certification", "monetization-economics", "in-app-purchase-systems", "marketing-launch-strategy", "analytics-metrics", "player-support-community", "live-operations-events", "business-development", "market-analysis", "content-calendar", "localization-regional"]
 ---
 

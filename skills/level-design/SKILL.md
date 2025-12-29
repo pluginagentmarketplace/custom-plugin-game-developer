@@ -1,6 +1,9 @@
 ---
 name: level-design
 description: Level design fundamentals, pacing, difficulty progression, environmental storytelling, and spatial design for engaging gameplay experiences.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Level Design

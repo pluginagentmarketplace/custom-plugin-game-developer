@@ -1,6 +1,9 @@
 ---
 name: networking-servers
 description: Multiplayer systems, netcode, game servers, synchronization, anti-cheat.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Networking & Game Servers

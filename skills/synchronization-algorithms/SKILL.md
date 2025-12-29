@@ -1,6 +1,9 @@
 ---
 name: synchronization-algorithms
 description: Network synchronization, lag compensation, client prediction, and state consistency for multiplayer games.
+sasmp_version: "1.3.0"
+bonded_agent: 01-game-designer
+bond_type: PRIMARY_BOND
 ---
 
 # Multiplayer Synchronization
