@@ -1,198 +1,229 @@
 {
+  "version": "2.0.0",
+  "sasmp_version": "1.3.0",
+  "description": "Game Development Plugin Hooks for learning progress, portfolio building, and career tracking",
   "hooks": [
     {
       "id": "learning-progress",
       "name": "Game Dev Learning Progress Tracker",
+      "version": "2.0.0",
       "description": "Track game development learning milestones and progress",
       "enabled": true,
       "triggers": ["learning-milestone", "project-completed", "skill-improved"],
+      "retry_policy": {
+        "enabled": true,
+        "max_attempts": 3,
+        "backoff": "exponential"
+      },
       "actions": [
         {
           "type": "track-progress",
-          "metrics": ["hours-spent", "projects-completed", "skills-learned"]
+          "metrics": ["hours-spent", "projects-completed", "skills-learned", "milestones-reached"]
         },
         {
           "type": "generate-report",
-          "frequency": "monthly",
-          "include": ["progress-summary", "next-recommendations"]
+          "frequency": "weekly",
+          "include": ["progress-summary", "next-recommendations", "skill-gaps"]
         }
-      ]
+      ],
+      "related_agents": ["01-game-designer", "02-game-programmer", "03-graphics-rendering", "04-audio-sound-design", "05-networking-multiplayer", "06-tools-pipeline", "07-game-publishing", "08-project-coordinator"]
     },
     {
       "id": "game-portfolio",
       "name": "Game Portfolio Builder",
-      "description": "Help build game development portfolio with completed games",
+      "version": "2.0.0",
+      "description": "Build and optimize game development portfolio with completed projects",
       "enabled": true,
-      "triggers": ["project-completed", "game-published"],
+      "triggers": ["project-completed", "game-published", "demo-created"],
+      "retry_policy": {
+        "enabled": true,
+        "max_attempts": 3,
+        "backoff": "exponential"
+      },
       "actions": [
         {
           "type": "add-to-portfolio",
-          "include": ["project-name", "description", "skills-used", "play-link"]
+          "include": ["project-name", "description", "skills-used", "play-link", "source-code", "screenshots"]
         },
         {
           "type": "optimize-portfolio",
-          "for": "industry-standards"
+          "for": "industry-standards",
+          "include": ["role-targeting", "keyword-optimization", "presentation-tips"]
         }
-      ]
+      ],
+      "related_agents": ["07-game-publishing", "08-project-coordinator"]
     },
     {
       "id": "engine-specialization",
       "name": "Engine Specialization Tracking",
-      "description": "Track expertise in specific engines (Unity, Unreal, Godot)",
+      "version": "2.0.0",
+      "description": "Track expertise in specific game engines (Unity, Unreal, Godot)",
       "enabled": true,
       "triggers": ["engine-selected", "project-completed", "skill-assessment"],
       "actions": [
         {
           "type": "track-engine-expertise",
-          "engines": ["unity", "unreal-engine", "godot"]
+          "engines": ["unity", "unreal-engine", "godot"],
+          "metrics": ["projects-count", "complexity-level", "feature-usage"]
         },
         {
-          "type": "recommend-next-engine",
-          "based-on": "skill-gaps"
+          "type": "recommend-advanced-topics",
+          "based-on": "current-proficiency"
         }
-      ]
+      ],
+      "related_agents": ["02-game-programmer", "03-graphics-rendering"]
     },
     {
       "id": "role-progression",
       "name": "Game Dev Role Progression",
-      "description": "Track progression toward game development specialization",
+      "version": "2.0.0",
+      "description": "Track progression toward game development specialization and career goals",
       "enabled": true,
-      "triggers": ["specialization-selected", "skill-improved"],
+      "triggers": ["specialization-selected", "skill-improved", "milestone-reached"],
       "actions": [
         {
           "type": "calculate-readiness",
           "role-specific": true,
-          "factors": ["skills", "projects", "experience-hours"]
+          "factors": ["skills", "projects", "experience-hours", "portfolio-quality"]
         },
         {
           "type": "job-market-insights",
           "role": "specialization",
-          "include": ["salary-range", "demand", "companies"]
+          "include": ["salary-range", "demand", "companies", "required-skills"]
         }
-      ]
-    },
-    {
-      "id": "community-networking",
-      "name": "Game Dev Community Networking",
-      "description": "Connect with game developers and communities",
-      "enabled": true,
-      "triggers": ["specialization-selected", "portfolio-updated"],
-      "actions": [
-        {
-          "type": "find-communities",
-          "platforms": ["discord", "reddit", "game-jams"],
-          "filter-by": "specialization"
-        },
-        {
-          "type": "suggest-networking",
-          "events": ["game-jams", "conferences", "meetups"]
-        },
-        {
-          "type": "find-mentors",
-          "specialization-match": true
-        }
-      ]
+      ],
+      "related_agents": ["08-project-coordinator", "07-game-publishing"]
     },
     {
       "id": "project-roadmap",
       "name": "Project Learning Roadmap",
+      "version": "2.0.0",
       "description": "Personalized game project progression path",
       "enabled": true,
-      "triggers": ["specialization-selected", "project-completed"],
+      "triggers": ["specialization-selected", "project-completed", "skill-level-changed"],
       "actions": [
         {
           "type": "create-project-path",
-          "sequence": ["beginner", "intermediate", "advanced", "professional"]
+          "sequence": ["beginner", "intermediate", "advanced", "professional"],
+          "personalized": true
         },
         {
           "type": "recommend-project",
           "difficulty": "next-level",
-          "specialization": "user-specialization"
+          "specialization": "user-specialization",
+          "engine": "user-engine"
         }
-      ]
+      ],
+      "related_agents": ["01-game-designer", "02-game-programmer"]
     },
     {
       "id": "game-jam-readiness",
       "name": "Game Jam Preparation",
+      "version": "2.0.0",
       "description": "Prepare for game jams and rapid development",
       "enabled": true,
-      "triggers": ["game-jam-announced", "skill-level-reached"],
+      "triggers": ["game-jam-announced", "skill-level-reached", "team-formed"],
       "actions": [
         {
-          "type": "suggest-jam-theme",
-          "based-on": "skills-and-experience"
+          "type": "suggest-jam-strategy",
+          "based-on": "skills-and-experience",
+          "include": ["scope-recommendations", "tool-suggestions", "time-management"]
         },
         {
-          "type": "team-finder",
+          "type": "team-coordination",
           "find": "jam-team",
-          "specialization": "needed-roles"
+          "match": "complementary-skills"
         },
         {
           "type": "checklist",
-          "content": "jam-preparation"
+          "content": "jam-preparation",
+          "include": ["pre-jam", "during-jam", "post-jam"]
         }
-      ]
+      ],
+      "related_agents": ["08-project-coordinator", "01-game-designer"]
     },
     {
       "id": "publishing-readiness",
       "name": "Game Publishing Checklist",
+      "version": "2.0.0",
       "description": "Prepare game for publishing to platforms",
       "enabled": true,
-      "triggers": ["game-complete", "polish-ready"],
+      "triggers": ["game-complete", "polish-ready", "certification-started"],
       "actions": [
         {
           "type": "generate-checklist",
-          "include": ["certification-requirements", "store-guidelines", "optimization"]
+          "include": ["certification-requirements", "store-guidelines", "optimization", "localization", "accessibility"]
         },
         {
           "type": "platform-guide",
-          "platforms": ["steam", "epic", "console", "mobile"],
+          "platforms": ["steam", "epic", "playstation", "xbox", "nintendo", "ios", "android"],
           "language": "step-by-step"
         }
-      ]
+      ],
+      "related_agents": ["07-game-publishing", "06-tools-pipeline"]
     },
     {
       "id": "performance-optimization-guide",
       "name": "Performance Optimization Assistant",
+      "version": "2.0.0",
       "description": "Guide through game optimization process",
       "enabled": true,
-      "triggers": ["optimization-started", "performance-issue"],
+      "triggers": ["optimization-started", "performance-issue", "platform-target-set"],
       "actions": [
         {
           "type": "profiling-guide",
-          "target-platform": "game-platform"
+          "target-platform": "game-platform",
+          "include": ["cpu-profiling", "gpu-profiling", "memory-profiling"]
         },
         {
           "type": "optimization-techniques",
-          "specialized-for": "target-hardware"
+          "specialized-for": "target-hardware",
+          "categories": ["rendering", "physics", "audio", "loading"]
         },
         {
           "type": "benchmark-tracking",
-          "metrics": ["fps", "memory", "loading-time"]
+          "metrics": ["fps", "frame-time", "memory", "loading-time", "draw-calls"]
         }
-      ]
+      ],
+      "related_agents": ["02-game-programmer", "03-graphics-rendering", "06-tools-pipeline"]
     },
     {
-      "id": "industry-insights",
-      "name": "Game Dev Industry Insights",
-      "description": "Stay updated on game development industry trends",
+      "id": "code-review-assistant",
+      "name": "Game Code Review Assistant",
+      "version": "2.0.0",
+      "description": "Automated code review for game development best practices",
       "enabled": true,
-      "triggers": ["monthly", "quarterly"],
+      "triggers": ["code-submitted", "pr-created", "review-requested"],
       "actions": [
         {
-          "type": "trend-report",
-          "topics": ["technology-trends", "market-analysis", "best-practices"]
+          "type": "analyze-code",
+          "checks": ["performance-patterns", "memory-management", "threading-safety", "platform-compatibility"]
         },
         {
-          "type": "tool-updates",
-          "engines": ["unity", "unreal", "godot"],
-          "include": ["new-features", "deprecations"]
-        },
-        {
-          "type": "job-market-report",
-          "role-specialization": "user-role"
+          "type": "suggest-improvements",
+          "categories": ["optimization", "maintainability", "best-practices"]
         }
-      ]
+      ],
+      "related_agents": ["02-game-programmer", "06-tools-pipeline"]
+    },
+    {
+      "id": "multiplayer-testing",
+      "name": "Multiplayer Testing Assistant",
+      "version": "2.0.0",
+      "description": "Guide multiplayer testing and network debugging",
+      "enabled": true,
+      "triggers": ["multiplayer-development", "network-issue", "sync-problem"],
+      "actions": [
+        {
+          "type": "testing-checklist",
+          "include": ["connection-testing", "latency-simulation", "packet-loss", "reconnection"]
+        },
+        {
+          "type": "debug-guide",
+          "for": ["desync-issues", "rubber-banding", "lag-compensation"]
+        }
+      ],
+      "related_agents": ["05-networking-multiplayer", "02-game-programmer"]
     }
   ],
   "global-settings": {
@@ -200,6 +231,12 @@
     "progress-tracking": true,
     "portfolio-building": true,
     "community-networking": true,
-    "industry-updates": true
+    "industry-updates": true,
+    "auto-recommendations": true,
+    "skill-decay-tracking": false
+  },
+  "observability": {
+    "log_events": ["hook-triggered", "action-completed", "error"],
+    "metrics": ["trigger-count", "success-rate", "user-engagement"]
   }
 }

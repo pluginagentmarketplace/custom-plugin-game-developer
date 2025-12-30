@@ -1,7 +1,24 @@
 ---
 name: learn
-description: gamedev - Personalized Game Development Learning Paths
-allowed-tools: Read
+version: "2.0.0"
+description: Personalized Game Development Learning Paths
+sasmp_version: "1.3.0"
+allowed-tools: Read, WebSearch
+
+parameters:
+  - name: specialization
+    type: string
+    required: false
+    validation:
+      enum: [designer, programmer, graphics, audio, networking, tools, publisher]
+  - name: engine
+    type: string
+    required: false
+    validation:
+      enum: [unity, unreal, godot]
+  - name: milestone
+    type: string
+    required: false
 ---
 
 # /learn-gamedev - Personalized Game Development Learning Paths
@@ -98,14 +115,9 @@ Begin your game development journey with expert-designed learning paths tailored
 - Portfolio development
 - Project: Lead design on significant game project
 
-**Recommended Tools**:
-- Game Design Document templates (Google Docs, Notion)
-- Figma for UI/UX mockups
-- Blender or Unity for prototype testing
-- Spreadsheets for balance tracking
-- Unreal Engine or Unity for playtesting
+**Related Agents**: 01-game-designer
 
-**Related Agents**: Game Designer Agent
+---
 
 ### 💻 Game Programmer Path
 
@@ -143,49 +155,13 @@ Begin your game development journey with expert-designed learning paths tailored
 - Build systems and CI/CD
 - Project: Complex multiplayer system or engine feature
 
-**Learning Path by Engine**:
+**Related Agents**: 02-game-programmer
 
-**Unity + C# Path**:
-- MonoBehaviours and component-based architecture
-- Coroutines and async patterns
-- Physics2D/Physics3D systems
-- Animation state machines
-- UI system and event handling
-- Networking with Netcode for GameObjects
-
-**Unreal + C++ Path**:
-- C++ fundamentals and STL containers
-- Unreal reflection system and UObjects
-- Gameplay Framework (Pawns, Characters)
-- Animation Blueprint systems
-- Networking and replication
-- Console commands and debugging
-
-**Godot + GDScript Path**:
-- Node-based architecture
-- Scene system and inheritance
-- GDScript language features
-- Physics and collision detection
-- Signal systems for communication
-- Multi-scene workflow
-
-**Recommended Tools**:
-- Code editor (Visual Studio, Rider, VS Code)
-- Git for version control
-- Profilers (Unity Profiler, Unreal Insights)
-- Debugger with breakpoints
-- Build automation tools
-
-**Related Agents**: Game Programmer Agent
+---
 
 ### 🎨 Graphics Programmer Path
 
 **Overview**: Create stunning visuals through shader programming, particle systems, and rendering optimization.
-
-**Prerequisites**:
-- Programming experience
-- Linear algebra and math
-- Understanding of rendering pipelines
 
 **Timeline**: 12-18 months to junior level
 
@@ -213,23 +189,13 @@ Begin your game development journey with expert-designed learning paths tailored
 - Performance budgeting
 - Project: Implement graphics-intensive game feature
 
-**Recommended Tools**:
-- Shader IDE (Visual Studio Code with Shading Language plugin)
-- Substance Designer for textures
-- GPU profilers (Nvidia Nsight, AMD GPU Profiler)
-- 3D modeling (Blender, Maya)
-- Image editing (Photoshop, GIMP)
+**Related Agents**: 03-graphics-rendering
 
-**Related Agents**: Graphics & Rendering Agent
+---
 
 ### 🎵 Audio Specialist Path
 
 **Overview**: Create immersive audio experiences through sound design, music composition, and audio programming.
-
-**Prerequisites**:
-- Musical background helpful but not required
-- Audio engineering basics
-- DAW experience helpful
 
 **Timeline**: 12-18 months to junior level
 
@@ -258,23 +224,13 @@ Begin your game development journey with expert-designed learning paths tailored
 - Leadership and team collaboration
 - Project: Compose complete soundtrack or design audio vertical slice
 
-**Recommended Tools**:
-- DAW (Logic Pro, Ableton Live, Reaper, FL Studio)
-- Audio middleware (Wwise, FMOD)
-- Recording equipment and microphones
-- Audio editing (Audacity, Adobe Audition)
-- Synthesis (Native Instruments, Spectrasonics)
+**Related Agents**: 04-audio-sound-design
 
-**Related Agents**: Audio & Sound Design Agent
+---
 
 ### 🌐 Network Programmer Path
 
 **Overview**: Build multiplayer systems and scalable game servers for connected gaming.
-
-**Prerequisites**:
-- Programming experience
-- Networking fundamentals
-- Understanding of client-server architecture
 
 **Timeline**: 14-18 months to junior level
 
@@ -303,23 +259,13 @@ Begin your game development journey with expert-designed learning paths tailored
 - Analytics and monitoring
 - Project: Deploy scalable multiplayer system
 
-**Recommended Tools**:
-- Game frameworks (Photon, PlayFab, Netcode for GameObjects)
-- Game servers (AWS GameLift, Microsoft PlayFab)
-- Databases (PostgreSQL, MongoDB)
-- Monitoring tools (Prometheus, Grafana)
-- Load testing tools
+**Related Agents**: 05-networking-multiplayer
 
-**Related Agents**: Networking & Multiplayer Agent
+---
 
 ### 🛠️ Tools Programmer Path
 
 **Overview**: Streamline development through tools, pipelines, and automation.
-
-**Prerequisites**:
-- Programming experience
-- Understanding of development workflows
-- Interest in efficiency and automation
 
 **Timeline**: 10-15 months to junior level
 
@@ -348,23 +294,13 @@ Begin your game development journey with expert-designed learning paths tailored
 - Documentation and training
 - Project: Implement comprehensive dev infrastructure
 
-**Recommended Tools**:
-- Python, C#, Lua for scripting
-- Git and Perforce for version control
-- Jenkins, GitHub Actions for CI/CD
-- CMake for build systems
-- Docker for containerization
+**Related Agents**: 06-tools-pipeline
 
-**Related Agents**: Tools & Pipeline Agent
+---
 
-### 🚀 Game Producer/Publisher Path
+### 🚀 Game Publisher Path
 
 **Overview**: Bring games to market and manage live operations and communities.
-
-**Prerequisites**:
-- Understanding of game development
-- Business and communication skills
-- Project management experience helpful
 
 **Timeline**: 8-12 months to junior level
 
@@ -393,19 +329,13 @@ Begin your game development journey with expert-designed learning paths tailored
 - Risk management
 - Project: Manage live game operations
 
-**Recommended Tools**:
-- Platform stores (Steam, Epic, console networks)
-- Community platforms (Discord, forums, Reddit)
-- Analytics (Google Analytics, Mixpanel)
-- Marketing (Twitter, YouTube, social)
-- Project management (Jira, Monday.com)
+**Related Agents**: 07-game-publishing
 
-**Related Agents**: Game Publishing & Live Ops Agent
+---
 
 ## Learning Methodologies
 
 ### Structured Learning
-
 1. **Learn**: Study concept through resources
 2. **Practice**: Apply knowledge in exercises
 3. **Build**: Create project using skills
@@ -413,57 +343,11 @@ Begin your game development journey with expert-designed learning paths tailored
 5. **Iterate**: Refine understanding through repetition
 
 ### Project-Based Learning
-
 - Select meaningful projects
 - Break into milestones
 - Share and get feedback
 - Build portfolio pieces
 - Learn through doing
-
-### Community Learning
-
-- Join game development communities
-- Share progress and get feedback
-- Learn from others' projects
-- Participate in game jams
-- Find mentors
-
-## Success Metrics
-
-Track your progress with these metrics:
-
-- **Completed Topics**: Modules finished
-- **Projects Completed**: Portfolio pieces
-- **Skill Tests**: Assessment scores
-- **Community Engagement**: Feedback and collaboration
-- **Time Investment**: Hours spent
-- **Peer Feedback**: Rating from community
-
-## Common Paths Combinations
-
-### Quick Start Designer (6-8 months)
-1. Game Design Theory
-2. Level Design
-3. Gameplay Mechanics
-4. GDD Creation and Communication
-5. 3-4 small design projects
-→ Ready for junior design roles
-
-### Full-Stack Programmer (14-18 months)
-1. Engine Fundamentals (any engine)
-2. Gameplay Systems Programming
-3. Multiplayer/Networking Basics
-4. Performance and Optimization
-5. Advanced architecture
-→ Ready for gameplay programmer roles
-
-### Graphics Specialist (12-18 months)
-1. Graphics Fundamentals
-2. Shader Programming
-3. Particle Systems and VFX
-4. Optimization and Profiling
-5. Advanced visual techniques
-→ Ready for graphics programmer roles
 
 ## Tips for Success
 
@@ -475,32 +359,6 @@ Track your progress with these metrics:
 - **Specialization**: Pick a path and go deep vs. learning everything
 - **Portfolio**: Document and showcase your best work
 - **Networking**: Build relationships in game development community
-
-## Recommended Resources by Type
-
-### Books
-- "The Art of Game Design" by Jesse Schell
-- "Rules of Play" by Salen & Zimmerman
-- "Game Engine Architecture" by Jason Gregory
-- "Real-Time Rendering" for graphics programming
-
-### Online Courses
-- Coursera game design specialization
-- Udemy game development courses
-- LinkedIn Learning game development
-- GDC (Game Developers Conference) talks
-
-### Communities
-- r/gamedev on Reddit
-- Game Development Stack Exchange
-- Local game development meetups
-- Game jams (Ludum Dare, Global Game Jam)
-
-### Tools & Software
-- Free game engines (Unity, Godot, Unreal)
-- Free or affordable middleware
-- Open-source game development tools
-- Community-created tutorials and assets
 
 ---
 
