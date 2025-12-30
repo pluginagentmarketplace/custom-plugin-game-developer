@@ -1,66 +1,255 @@
 ---
 name: game-tools-workflows
-description: Game development tools, asset pipelines, version control, build systems, and development workflows.
+version: "2.0.0"
+description: |
+  Game development tools, asset pipelines, version control, build systems,
+  and team development workflows for efficient production.
 sasmp_version: "1.3.0"
-bonded_agent: 01-game-designer
+bonded_agent: 06-tools-pipeline
 bond_type: PRIMARY_BOND
+
+parameters:
+  - name: workflow
+    type: string
+    required: false
+    validation:
+      enum: [git, build, asset_pipeline, team_process]
+  - name: team_size
+    type: string
+    required: false
+    validation:
+      enum: [solo, small, medium, large]
+
+retry_policy:
+  enabled: true
+  max_attempts: 3
+  backoff: exponential
+
+observability:
+  log_events: [start, complete, error]
+  metrics: [commit_frequency, build_success_rate, integration_time]
 ---
 
 # Game Development Tools & Workflows
 
-## Development Tools
+## Development Tool Stack
 
-- **Game Engines**: Unity, Unreal, Godot editors
-- **3D Modeling**: Blender (free), Maya, 3ds Max
-- **Texture Creation**: Substance Painter, Photoshop
-- **Audio Tools**: Wwise, FMOD, Reaper
-- **Version Control**: Git, Perforce
-- **IDEs**: Visual Studio, Visual Studio Code, Rider
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    GAME DEV TOOL STACK                       │
+├─────────────────────────────────────────────────────────────┤
+│  ENGINE: Unity / Unreal / Godot                             │
+│                                                              │
+│  IDE: Visual Studio / Rider / VS Code                       │
+│                                                              │
+│  VERSION CONTROL:                                            │
+│  Git + LFS (indie) / Perforce (large teams)                │
+│                                                              │
+│  ART TOOLS:                                                  │
+│  Blender / Maya / Substance Painter / Photoshop            │
+│                                                              │
+│  AUDIO:                                                      │
+│  Wwise / FMOD / Reaper / Audacity                          │
+│                                                              │
+│  PROJECT MANAGEMENT:                                         │
+│  Jira / Notion / Trello / Linear                            │
+│                                                              │
+│  COMMUNICATION:                                              │
+│  Slack / Discord / Teams                                    │
+└─────────────────────────────────────────────────────────────┘
+```
 
-## Asset Pipelines
+## Git Workflow for Games
 
-- **Model Import**: FBX, GLTF, OBJ formats
-- **Texture Import**: PBR workflows, atlasing
-- **Animation Import**: Rigged models, skeleton setup
-- **Audio Import**: Formats, compression settings
-- **Automation**: Scripts to process assets
-- **Quality Control**: Validation, optimization
+```
+GIT BRANCHING STRATEGY:
+┌─────────────────────────────────────────────────────────────┐
+│                                                              │
+│  main ─────●─────────●─────────●─────────● (releases)      │
+│             ↑         ↑         ↑         ↑                 │
+│  develop ──●──●──●───●──●──●───●──●──●───● (integration)   │
+│             ↑  ↑      ↑  ↑                                  │
+│  feature/X─●──●      ●──●                                   │
+│                                                              │
+│  BRANCH TYPES:                                               │
+│  main:       Production releases only                       │
+│  develop:    Integration branch, daily builds               │
+│  feature/*:  New features, short-lived                      │
+│  fix/*:      Bug fixes                                      │
+│  release/*:  Release preparation                            │
+└─────────────────────────────────────────────────────────────┘
 
-## Version Control with Git
+GIT LFS CONFIGURATION:
+┌─────────────────────────────────────────────────────────────┐
+│  .gitattributes:                                             │
+│  *.psd filter=lfs diff=lfs merge=lfs -text                 │
+│  *.fbx filter=lfs diff=lfs merge=lfs -text                 │
+│  *.wav filter=lfs diff=lfs merge=lfs -text                 │
+│  *.mp3 filter=lfs diff=lfs merge=lfs -text                 │
+│  *.png filter=lfs diff=lfs merge=lfs -text                 │
+│  *.tga filter=lfs diff=lfs merge=lfs -text                 │
+│  *.zip filter=lfs diff=lfs merge=lfs -text                 │
+└─────────────────────────────────────────────────────────────┘
+```
 
-- **Repository Setup**: GitHub, GitLab, Bitbucket
-- **Large Files**: Git LFS for art assets
-- **Branching**: Feature branches, development
-- **Merging**: Conflict resolution
-- **Team Workflow**: Pull requests, reviews
-- **Asset Management**: Binary file handling
+## Commit Convention
 
-## Build Systems
+```
+COMMIT MESSAGE FORMAT:
+┌─────────────────────────────────────────────────────────────┐
+│  PREFIX: Description (max 50 chars)                         │
+│                                                              │
+│  PREFIXES:                                                   │
+│  feat:     New feature                                      │
+│  fix:      Bug fix                                          │
+│  art:      Art/visual changes                               │
+│  audio:    Sound/music changes                              │
+│  level:    Level design changes                             │
+│  refactor: Code restructuring                               │
+│  perf:     Performance improvements                         │
+│  test:     Test additions/changes                           │
+│  ci:       CI/CD changes                                    │
+│  docs:     Documentation                                    │
+│                                                              │
+│  EXAMPLES:                                                   │
+│  feat: Add double jump ability                              │
+│  fix: Resolve player falling through floor                  │
+│  art: Update hero character textures                        │
+│  perf: Optimize enemy spawning system                       │
+└─────────────────────────────────────────────────────────────┘
+```
 
-- **Compilation**: Building executables
-- **Packaging**: Creating distributable builds
-- **Platforms**: PC, console, mobile
-- **Automation**: Build scripts, CI/CD
-- **Distribution**: Publishing to stores
-- **Version Management**: Build numbers, versioning
+## Build Automation
 
-## CI/CD Pipelines
+```python
+# ✅ Production-Ready: Build Script
+import subprocess
+import os
+from datetime import datetime
 
-- **Automated Testing**: Unit tests, smoke tests
-- **Build Automation**: Nightly builds
-- **Deployment**: Automated to testing environments
-- **Quality Gates**: Code review, test coverage
-- **Tools**: Jenkins, GitHub Actions, GitLab CI
+class GameBuilder:
+    def __init__(self, project_path: str, unity_path: str):
+        self.project_path = project_path
+        self.unity_path = unity_path
+        self.build_number = self._get_build_number()
 
-## Development Workflow
+    def build(self, platform: str, config: str = "Release"):
+        build_path = f"Builds/{platform}/{self.build_number}"
 
-- **Agile/Scrum**: Sprint-based development
-- **Team Communication**: Jira, Trello, Asana
-- **Documentation**: Design docs, code comments
-- **Playtesting**: Feedback, iteration
-- **Code Review**: Quality assurance
-- **Performance Monitoring**: Metrics tracking
+        args = [
+            self.unity_path,
+            "-quit",
+            "-batchmode",
+            "-projectPath", self.project_path,
+            "-executeMethod", "BuildScript.Build",
+            f"-buildTarget", platform,
+            f"-buildPath", build_path,
+            f"-buildConfig", config,
+            "-logFile", f"Logs/build_{platform}.log"
+        ]
+
+        result = subprocess.run(args, capture_output=True)
+
+        if result.returncode != 0:
+            raise Exception(f"Build failed: {result.stderr}")
+
+        return build_path
+
+    def _get_build_number(self) -> str:
+        return datetime.now().strftime("%Y%m%d.%H%M")
+```
+
+## Team Workflow
+
+```
+AGILE SPRINT WORKFLOW:
+┌─────────────────────────────────────────────────────────────┐
+│  DAY 1: Sprint Planning                                      │
+│  • Review backlog                                           │
+│  • Commit to sprint goals                                   │
+│  • Break into tasks                                         │
+├─────────────────────────────────────────────────────────────┤
+│  DAILY: Standup (15 min)                                    │
+│  • What did you do?                                         │
+│  • What will you do?                                        │
+│  • Any blockers?                                            │
+├─────────────────────────────────────────────────────────────┤
+│  CONTINUOUS: Development                                    │
+│  • Work on tasks                                            │
+│  • Daily builds/tests                                       │
+│  • Code reviews                                             │
+├─────────────────────────────────────────────────────────────┤
+│  PLAYTEST: Mid-sprint                                       │
+│  • Team plays current build                                 │
+│  • Gather feedback                                          │
+│  • Adjust priorities                                        │
+├─────────────────────────────────────────────────────────────┤
+│  END: Sprint Review + Retro                                 │
+│  • Demo completed work                                      │
+│  • What went well/poorly?                                   │
+│  • Improvements for next sprint                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## 🔧 Troubleshooting
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ PROBLEM: Merge conflicts in scene files                     │
+├─────────────────────────────────────────────────────────────┤
+│ SOLUTIONS:                                                   │
+│ → Use prefabs instead of scene objects                      │
+│ → Smart merge tools (Unity Smart Merge)                     │
+│ → Coordinate who works on which scenes                      │
+│ → Use scene additivity                                      │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ PROBLEM: Repository growing too large                       │
+├─────────────────────────────────────────────────────────────┤
+│ SOLUTIONS:                                                   │
+│ → Configure Git LFS properly                                │
+│ → Clean up old branches                                     │
+│ → Don't commit generated files (Library/)                   │
+│ → Use .gitignore templates for game engines                │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ PROBLEM: Builds breaking frequently                         │
+├─────────────────────────────────────────────────────────────┤
+│ SOLUTIONS:                                                   │
+│ → Add CI build on every PR                                  │
+│ → Implement smoke tests                                     │
+│ → Require passing builds before merge                       │
+│ → Add pre-commit hooks for validation                       │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Essential .gitignore
+
+```gitignore
+# Unity
+Library/
+Temp/
+Obj/
+Build/
+*.csproj
+*.unityproj
+*.sln
+
+# Unreal
+Intermediate/
+Saved/
+DerivedDataCache/
+*.sln
+
+# Common
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+```
 
 ---
 
-**Use this skill**: When setting up development pipelines, managing assets, automating builds.
+**Use this skill**: When setting up pipelines, managing assets, or automating builds.

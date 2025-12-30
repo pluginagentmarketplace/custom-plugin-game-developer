@@ -1,34 +1,221 @@
 ---
 name: programming-architecture
-description: Game code architecture, design patterns, scalable systems, and maintainable code structure for complex games.
+version: "2.0.0"
+description: |
+  Game code architecture, design patterns, scalable systems, and maintainable
+  code structure for complex games.
 sasmp_version: "1.3.0"
-bonded_agent: 01-game-designer
+bonded_agent: 02-game-programmer
 bond_type: PRIMARY_BOND
+
+parameters:
+  - name: pattern
+    type: string
+    required: false
+    validation:
+      enum: [ecs, state_machine, observer, command, object_pool, singleton]
+
+retry_policy:
+  enabled: true
+  max_attempts: 3
+  backoff: exponential
+
+observability:
+  log_events: [start, complete, error]
+  metrics: [execution_time, code_complexity]
 ---
 
 # Game Programming Architecture
 
-## Patterns
+## Design Patterns for Games
 
-- **Entity-Component-System (ECS)**: Flexible game object composition
-- **State Machine**: AI and gameplay state management
-- **Observer Pattern**: Event systems and messaging
-- **Object Pool**: Performance optimization through reuse
+### 1. State Machine
+Best for: Character states, AI, game flow
+
+```csharp
+// ✅ Production-Ready State Machine
+public abstract class State<T> where T : class
+{
+    protected T Context { get; private set; }
+    public void SetContext(T context) => Context = context;
+    public virtual void Enter() { }
+    public virtual void Update() { }
+    public virtual void Exit() { }
+}
+
+public class StateMachine<T> where T : class
+{
+    private State<T> _current;
+    private readonly T _context;
+
+    public StateMachine(T context) => _context = context;
+
+    public void ChangeState(State<T> newState)
+    {
+        _current?.Exit();
+        _current = newState;
+        _current.SetContext(_context);
+        _current.Enter();
+    }
+
+    public void Update() => _current?.Update();
+}
+
+// Usage
+public class PlayerIdleState : State<Player>
+{
+    public override void Enter() => Context.Animator.Play("Idle");
+    public override void Update()
+    {
+        if (Context.Input.magnitude > 0.1f)
+            Context.StateMachine.ChangeState(new PlayerMoveState());
+    }
+}
+```
+
+### 2. Object Pool
+Best for: Bullets, particles, enemies
+
+```csharp
+// ✅ Production-Ready Object Pool
+public class ObjectPool<T> where T : Component
+{
+    private readonly Queue<T> _pool = new();
+    private readonly T _prefab;
+    private readonly Transform _parent;
+
+    public ObjectPool(T prefab, int initialSize, Transform parent = null)
+    {
+        _prefab = prefab;
+        _parent = parent;
+        for (int i = 0; i < initialSize; i++)
+            _pool.Enqueue(CreateInstance());
+    }
+
+    public T Get(Vector3 position)
+    {
+        var obj = _pool.Count > 0 ? _pool.Dequeue() : CreateInstance();
+        obj.transform.position = position;
+        obj.gameObject.SetActive(true);
+        return obj;
+    }
+
+    public void Return(T obj)
+    {
+        obj.gameObject.SetActive(false);
+        _pool.Enqueue(obj);
+    }
+
+    private T CreateInstance() => Object.Instantiate(_prefab, _parent);
+}
+```
+
+### 3. Observer Pattern (Events)
+Best for: UI updates, achievements, damage notifications
+
+```csharp
+// ✅ Production-Ready Event System
+public static class GameEvents
+{
+    public static event Action<int> OnScoreChanged;
+    public static event Action<float> OnHealthChanged;
+    public static event Action OnPlayerDied;
+
+    public static void ScoreChanged(int score) => OnScoreChanged?.Invoke(score);
+    public static void HealthChanged(float health) => OnHealthChanged?.Invoke(health);
+    public static void PlayerDied() => OnPlayerDied?.Invoke();
+}
+
+// Subscribe
+GameEvents.OnScoreChanged += UpdateScoreUI;
+
+// Always unsubscribe in OnDestroy
+private void OnDestroy() => GameEvents.OnScoreChanged -= UpdateScoreUI;
+```
+
+### 4. Command Pattern
+Best for: Undo/redo, input replay, networking
+
+```csharp
+public interface ICommand
+{
+    void Execute();
+    void Undo();
+}
+
+public class MoveCommand : ICommand
+{
+    private readonly Transform _target;
+    private readonly Vector3 _direction;
+    private Vector3 _previousPosition;
+
+    public MoveCommand(Transform target, Vector3 direction)
+    {
+        _target = target;
+        _direction = direction;
+    }
+
+    public void Execute()
+    {
+        _previousPosition = _target.position;
+        _target.position += _direction;
+    }
+
+    public void Undo() => _target.position = _previousPosition;
+}
+```
+
+## Architecture Layers
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    GAME LAYER                                │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ Managers (GameManager, UIManager, AudioManager)      │   │
+│  └─────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ Systems (Combat, Movement, Inventory, Quest)         │   │
+│  └─────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ Components (Health, Weapon, CharacterController)     │   │
+│  └─────────────────────────────────────────────────────┘   │
+├─────────────────────────────────────────────────────────────┤
+│                    ENGINE LAYER                              │
+│  Physics │ Rendering │ Audio │ Input │ Networking          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## 🔧 Troubleshooting
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ PROBLEM: Spaghetti code / tight coupling                     │
+├─────────────────────────────────────────────────────────────┤
+│ SOLUTIONS:                                                   │
+│ → Use dependency injection                                  │
+│ → Communicate via events, not direct references             │
+│ → Follow single responsibility principle                    │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ PROBLEM: Hard to test game systems                           │
+├─────────────────────────────────────────────────────────────┤
+│ SOLUTIONS:                                                   │
+│ → Separate logic from MonoBehaviour                         │
+│ → Use interfaces for dependencies                           │
+│ → Create testable pure functions                            │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ## Best Practices
 
-- Loose coupling between systems
-- Clear interfaces and contracts
-- Easy testing and debugging
-- Scalable to large codebases
-
-## Performance Considerations
-
-- Profiling-driven optimization
-- Memory layout awareness
-- Cache-friendly algorithms
-- Minimal allocations per frame
+| Practice | Benefit |
+|----------|---------|
+| Loose coupling | Systems can change independently |
+| Data-driven design | Balance without recompiling |
+| Interface abstractions | Easy mocking and testing |
+| Single responsibility | Clear, focused classes |
 
 ---
 
-**Use this skill**: When architecting game systems, improving code structure, or optimizing performance.
+**Use this skill**: When architecting systems, improving code structure, or optimizing performance.

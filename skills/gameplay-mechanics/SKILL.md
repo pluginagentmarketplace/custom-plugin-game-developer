@@ -1,393 +1,395 @@
 ---
 name: gameplay-mechanics
-description: Master implementation of core gameplay mechanics, system interactions, feedback loops, and iterative balance refinement. Learn to build responsive, engaging systems that transform design concepts into playable experiences through clean architecture and rapid iteration.
+version: "2.0.0"
+description: |
+  Core gameplay mechanics implementation, system interactions, feedback loops,
+  and iterative balance refinement for engaging player experiences.
 sasmp_version: "1.3.0"
 bonded_agent: 01-game-designer
 bond_type: PRIMARY_BOND
+
+parameters:
+  - name: mechanic_type
+    type: string
+    required: false
+    validation:
+      enum: [combat, movement, puzzle, progression, economy]
+  - name: complexity
+    type: string
+    required: false
+    validation:
+      enum: [simple, moderate, complex]
+
+retry_policy:
+  enabled: true
+  max_attempts: 3
+  backoff: exponential
+
+observability:
+  log_events: [start, complete, error]
+  metrics: [engagement_time, action_frequency, balance_score]
 ---
 
 # Gameplay Mechanics Implementation
 
-Gameplay mechanics are the interactive systems that form the core of player experience. This skill focuses on implementing mechanics cleanly, making them balanceable, and iterating rapidly based on playtesting feedback.
-
-## Core Principles
-
-### 1. Action Systems: Input to Effect
-
-The foundation of mechanics is the action system - converting player input into game world effects.
-
-**Input Handling**:
-- Capture player input (keyboard, gamepad, mouse, touch)
-- Queue inputs during processing
-- Handle simultaneous inputs appropriately
-- Consume inputs at correct time
-
-**Processing**:
-- Validate inputs (can player perform this action now?)
-- Calculate effects (what happens as result?)
-- Update game state
-- Generate feedback (what should player see/hear?)
-
-**Feedback**:
-- Immediate visual response (animation, particles)
-- Audio response (sound effects, feedback)
-- Screen shake or haptic feedback
-- UI updates showing results
-
-**Example: Attack Mechanic**
-```
-Input: Player presses attack button
-→ Validation: Check if player not in recovery, has stamina
-→ Processing: Check if enemy in range, calculate damage
-→ Effect: Deal damage, start recovery timer, reduce stamina
-→ Feedback: Attack animation, damage number, hit sound
-→ State Change: Enemy HP reduced, visual health bar update
-```
-
-### 2. Feedback Loops: Making Actions Feel Good
-
-Feedback loops connect player actions to observable game changes, making mechanics feel responsive.
-
-**Immediate Feedback** (< 100ms):
-- Essential for feeling responsive
-- Audio/visual indication action was registered
-- Must happen even if processing takes longer
-
-**Short-term Feedback** (100ms - 1 second):
-- Direct result of action (damage dealt, resource collected)
-- Visible state changes (health bar changes)
-- Score/progress updates
-
-**Long-term Feedback** (seconds - minutes):
-- Accumulated effects (leveling up, progression)
-- New abilities unlocked
-- Story progress
-- Environmental changes
-
-**Feedback Design Principles**:
-- **Clarity**: Obvious what happened
-- **Intensity**: Match importance (small action = small feedback)
-- **Frequency**: Provide frequent feedback, not just final results
-- **Variety**: Avoid feedback fatigue through variation
-- **Consistency**: Similar actions produce consistent feedback
-- **Layering**: Combine visual, audio, haptic feedback
-
-### 3. Resource Economy Systems
-
-Resource management creates interesting decisions and progression.
-
-**Resource Types**:
-- **Health**: Player durability and challenge
-- **Currency**: Purchasing and economic decisions
-- **Energy/Stamina**: Gating repeated actions
-- **Cooldowns**: Preventing ability spam
-- **Inventory Slots**: Forcing resource management
-- **Crafting Materials**: Multi-step progression
-
-**Economy Principles**:
-- **Balance Scarcity**: Not too abundant, not too scarce
-- **Multiple Uses**: Resources valuable for multiple purposes
-- **Trade-offs**: Spending resource on one thing means not spending elsewhere
-- **Regeneration**: How fast resources restore
-- **Loss Consequences**: What happens when resource depleted?
-
-**Example: Stamina Economy**
-```
-Max Stamina: 100
-Actions consume:
-  - Light attack: 10 stamina
-  - Heavy attack: 25 stamina
-  - Dodge: 15 stamina
-  - Run: 5 stamina/second
-Regeneration: 20 stamina/second when not acting
-
-This creates interesting decisions:
-- Use stamina for defense or offense?
-- When to stop and recover?
-- Balance of risk/reward
-```
-
-### 4. Progression Systems
-
-Progression keeps players motivated by providing measurable growth.
-
-**Progression Types**:
-
-**Linear Progression**:
-- Unlock features in predetermined order
-- Good for learning curves
-- Less player agency
-
-**Branching Progression**:
-- Multiple paths to advancement
-- Player choice and specialization
-- More complex to balance
-
-**Skill Trees**:
-- Visual representation of options
-- Clear cost/benefit decisions
-- Multiple viable build paths
-
-**Seasonal/Episodic**:
-- Content resets between seasons
-- New challenges each cycle
-- Sustained engagement
-
-**Progression Mechanics**:
-- **Experience Points**: Earn from activities, unlock on milestones
-- **Levels**: Visible progression markers
-- **Unlocks**: New abilities, areas, cosmetics
-- **Skill Points**: Flexible progression choice
-- **Equipment**: Gear progression and itemization
-
-**Balancing Progression**:
-- Early progression should be fast (engagement hook)
-- Mid progression steady (maintaining interest)
-- Late progression slower (giving aspirational goals)
-- Avoid progression walls (sudden difficulty spikes)
-
-## System Architecture
-
-### Clean Separation of Concerns
-
-Well-architected mechanics systems are easier to balance and iterate on.
-
-**System Components**:
-
-**Input System**:
-```
-Captures and queues player input
-Converts to game-agnostic action commands
-Handles input validation and conflicts
-```
-
-**Action Execution**:
-```
-Processes action commands
-Checks preconditions (can action execute?)
-Calculates effects
-Updates game state
-Generates feedback
-```
-
-**Feedback System**:
-```
-Audio effects playback
-Visual effects (particles, animations)
-UI updates
-Camera/screen effects
-```
-
-**Separation Benefits**:
-- Change feedback without changing mechanics
-- Reuse mechanics with different feedback
-- Easy to iterate on balance numbers
-- Easy to implement new mechanics
-- Easier testing and debugging
-
-### Event-Driven Architecture
-
-Events decouple systems, allowing clean communication.
-
-**Event-Based Pattern**:
-```
-Player Action → Action Executed → Events Fired → Systems React
-
-Example: Enemy Takes Damage
-  Player attacks → Action executes →
-    Events:
-      - DamageDealt(amount, position)
-      - HealthChanged(old, new)
-      - EnemyStaggered()
-    Systems respond:
-      - VFX system: Show damage numbers
-      - Audio system: Play hit sound
-      - AI system: Interrupt attack
-      - UI system: Update health bar
-```
-
-**Event-Driven Benefits**:
-- Systems don't need direct references
-- Easy to add observers (new effects)
-- Same mechanic triggers multiple consequences
-- Easy to disable/enable features
-- Better for networking (easy to replicate events)
-
-### Parameter Tuning for Balance
-
-Mechanics need to be easily adjustable for balance iteration.
-
-**Data-Driven Design**:
-- Store mechanic numbers in configuration files
-- Change values without code recompilation
-- Quick balance iteration
-- Designer-friendly balance changes
-
-**Parameters to Expose**:
-```
-Combat System Parameters:
-  - Attack damage
-  - Attack speed
-  - Range
-  - Stamina cost
-  - Knockback amount
-
-Movement Parameters:
-  - Walk speed
-  - Run speed
-  - Jump height
-  - Air control
-
-Enemy Parameters:
-  - HP
-  - Damage
-  - Aggro range
-  - Attack frequency
-```
-
-**Balance Feedback Loop**:
-1. Observe playtesting data
-2. Identify imbalance (too weak, too strong, frustrating)
-3. Adjust parameters
-4. Test quickly
-5. Repeat
-
-## Implementation Patterns
-
-### State Machines for Action Flow
-
-State machines cleanly handle transitions between actions.
+## Core Mechanics Framework
 
 ```
-States:
-  Idle ↔ Running ↔ Falling
-  Idle → Attacking → Recovery → Idle
-
-Example: Attack State Machine
-  Idle:
-    Input.Attack → Attacking state
-    Input.Move → Running state
-
-  Attacking:
-    Frame 5: Hit active (can damage enemies)
-    Frame 15: Hit window closes
-    Frame 25: Recovery ends → Idle state
-
-  Recovery:
-    Cannot act
-    Cannot take new inputs
-    Timer counts down
+┌─────────────────────────────────────────────────────────────┐
+│                    ACTION → EFFECT LOOP                      │
+├─────────────────────────────────────────────────────────────┤
+│  INPUT          PROCESS          OUTPUT          FEEDBACK   │
+│  ┌─────┐       ┌─────────┐      ┌─────────┐    ┌─────────┐ │
+│  │Press│──────→│Validate │─────→│Update   │───→│Visual   │ │
+│  │Button│      │& Execute│      │State    │    │Audio    │ │
+│  └─────┘       └─────────┘      └─────────┘    │Haptic   │ │
+│                                                 └─────────┘ │
+│                                                              │
+│  TIMING REQUIREMENTS:                                        │
+│  • Input → Response: < 100ms (feels responsive)             │
+│  • Animation start: < 50ms (feels instant)                  │
+│  • Audio feedback: < 20ms (in sync with action)             │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-### Component-Based Systems
-
-Components modularize mechanic behavior.
+## Feedback Loop Design
 
 ```
-Weapon Component:
-  - Damage value
-  - Attack speed
-  - Range
-  - AttackSound
-  - HitEffect
-
-Player Component:
-  - Has HealthComponent
-  - Has WeaponComponent
-  - Has MovementComponent
-  - Has AnimationComponent
+FEEDBACK TIMING LAYERS:
+┌─────────────────────────────────────────────────────────────┐
+│  IMMEDIATE (0-100ms):                                        │
+│  ├─ Button press sound                                      │
+│  ├─ Animation start                                         │
+│  ├─ Screen shake                                            │
+│  └─ Controller vibration                                    │
+│                                                              │
+│  SHORT-TERM (100ms-1s):                                      │
+│  ├─ Damage numbers appear                                   │
+│  ├─ Health bar updates                                      │
+│  ├─ Enemy reaction animation                                │
+│  └─ Particle effects                                        │
+│                                                              │
+│  LONG-TERM (1s+):                                            │
+│  ├─ XP/Score increase                                       │
+│  ├─ Level up notification                                   │
+│  ├─ Achievement unlock                                      │
+│  └─ Story progression                                       │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-## Playtesting for Mechanics
+## Combat Mechanics
 
-Playtesting reveals how mechanics actually play vs. how they were designed.
+```csharp
+// ✅ Production-Ready: Combat State Machine
+public class CombatStateMachine : MonoBehaviour
+{
+    public enum CombatState { Idle, Attacking, Blocking, Recovering, Staggered }
 
-### Identifying Friction Points
+    [Header("Combat Parameters")]
+    [SerializeField] private float attackDamage = 10f;
+    [SerializeField] private float attackRange = 2f;
+    [SerializeField] private float attackCooldown = 0.5f;
+    [SerializeField] private float blockDamageReduction = 0.7f;
+    [SerializeField] private float staggerDuration = 0.3f;
 
-**Friction**: Anything preventing smooth, fun gameplay
+    private CombatState _currentState = CombatState.Idle;
+    private float _stateTimer;
 
-**Common Friction Sources**:
-- **Unresponsive Controls**: Input doesn't immediately feel good
-- **Unclear Feedback**: Player doesn't understand what happened
-- **Tedium**: Repetitive actions without reward
-- **Unbalanced Difficulty**: Too easy or too hard for player skill
-- **Unfair Mechanics**: Consequences seem random or unfair
-- **Poor Pacing**: Actions feel too slow or clunky
+    public event Action<CombatState> OnStateChanged;
+    public event Action<float> OnDamageDealt;
+    public event Action<float> OnDamageTaken;
 
-**Identifying Friction**:
-- Watch player faces and body language
-- Listen to player complaints
-- Note where players hesitate or repeat actions
-- Track time spent on tasks
-- Record what players do without instruction
+    public bool TryAttack()
+    {
+        if (_currentState != CombatState.Idle) return false;
 
-### Measuring Engagement
+        TransitionTo(CombatState.Attacking);
+        StartCoroutine(AttackSequence());
+        return true;
+    }
 
-**Quantitative Metrics**:
-- **Session Length**: How long do players stay?
-- **Retention**: Do players come back?
-- **Progression Speed**: How quickly do players progress?
-- **Action Frequency**: How often do players repeat actions?
-- **Failure Rate**: What percentage fail at challenges?
+    private IEnumerator AttackSequence()
+    {
+        // Wind-up phase
+        yield return new WaitForSeconds(0.1f);
 
-**Qualitative Feedback**:
-- What felt good?
-- What was frustrating?
-- Was challenge appropriate?
-- What would improve it?
-- Would you play again?
+        // Active hit frame
+        var hits = Physics.OverlapSphere(transform.position + transform.forward, attackRange);
+        foreach (var hit in hits)
+        {
+            if (hit.TryGetComponent<IDamageable>(out var target))
+            {
+                target.TakeDamage(attackDamage);
+                OnDamageDealt?.Invoke(attackDamage);
+            }
+        }
 
-### Rapid Iteration Cycles
+        // Recovery phase
+        yield return new WaitForSeconds(attackCooldown);
+        TransitionTo(CombatState.Idle);
+    }
 
-Quick iteration on mechanics is essential.
+    public float TakeDamage(float damage)
+    {
+        float finalDamage = _currentState == CombatState.Blocking
+            ? damage * (1f - blockDamageReduction)
+            : damage;
 
-**Iteration Process**:
-1. **Playtest** (15-30 minutes)
-2. **Gather Feedback** (qualitative + quantitative)
-3. **Analyze** (5-15 minutes, identify patterns)
-4. **Adjust** (change parameters or design)
-5. **Repeat** (test change immediately)
+        OnDamageTaken?.Invoke(finalDamage);
 
-**Time Target**: Full cycle in 1-2 hours
+        if (finalDamage > 5f) // Stagger threshold
+        {
+            TransitionTo(CombatState.Staggered);
+            StartCoroutine(RecoverFromStagger());
+        }
 
-**Benefits of Speed**:
-- Fresh perspective each iteration
-- Multiple design approaches tested quickly
-- Find dead ends fast (early pivot)
-- Avoid over-polishing broken mechanics
-- Team stays excited with visible progress
+        return finalDamage;
+    }
 
-## Common Pitfalls
+    private void TransitionTo(CombatState newState)
+    {
+        _currentState = newState;
+        _stateTimer = 0f;
+        OnStateChanged?.Invoke(newState);
+    }
+}
+```
 
-- **Unresponsive Feel**: Delays between input and feedback
-- **Unbalanced**: Some options trivially better/worse
-- **Unclear Mechanics**: Players don't understand how things work
-- **Tedious Execution**: Mechanics require tedious repeated actions
-- **No Clear Progression**: Players don't see advancement
-- **Feedback Overload**: Too much visual/audio feedback
-- **Unfair Difficulty**: Challenge feels random or impossible
-- **No Decision Making**: Only one viable approach
+## Resource Economy System
 
-## Related Resources
+```
+ECONOMY BALANCE FORMULA:
+┌─────────────────────────────────────────────────────────────┐
+│  INCOME vs EXPENDITURE:                                      │
+│                                                              │
+│  Hourly Income = (Enemies/hr × Gold/Enemy) + PassiveIncome  │
+│  Hourly Spend  = (Upgrades + Consumables + Deaths)          │
+│                                                              │
+│  BALANCE RATIO:                                              │
+│  • < 0.8: Too scarce (frustrating)                          │
+│  • 0.8-1.2: Balanced (meaningful choices)                   │
+│  • > 1.2: Too abundant (no tension)                         │
+│                                                              │
+│  EXAMPLE STAMINA SYSTEM:                                     │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │  Max: 100  │  Regen: 20/sec  │  On Hit: +10           │  │
+│  ├───────────────────────────────────────────────────────┤  │
+│  │  Light Attack: -10  │  Heavy Attack: -25              │  │
+│  │  Dodge: -15         │  Block: -5/hit                  │  │
+│  │  Sprint: -5/sec     │  Jump: -8                       │  │
+│  └───────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
 
-**Game Feel**: Action games focus on responsive, satisfying mechanics
-**Balancing**: Spreadsheet systems for tracking mechanic numbers
-**Playtesting**: Methodology for gathering feedback
-**Architecture**: Code patterns for clean systems
+## Progression Systems
 
-## Related Agents & Skills
+```
+PROGRESSION CURVE:
+┌─────────────────────────────────────────────────────────────┐
+│  Power                                                       │
+│    ↑                                                         │
+│    │                                    ╱───── Late Game     │
+│    │                              ╱────╱       (slow, goals) │
+│    │                        ╱────╱                           │
+│    │                  ╱────╱                                 │
+│    │            ╱────╱       Mid Game                        │
+│    │      ╱────╱             (steady progress)               │
+│    │ ╱───╱                                                   │
+│    │╱ Early Game (fast, hook player)                        │
+│    └────────────────────────────────────────────────→ Time   │
+│                                                              │
+│  XP CURVE FORMULA:                                           │
+│  XP_needed(level) = base_xp × (level ^ growth_rate)         │
+│  • growth_rate 1.5: Gentle curve (casual)                   │
+│  • growth_rate 2.0: Standard curve (balanced)               │
+│  • growth_rate 2.5: Steep curve (hardcore)                  │
+└─────────────────────────────────────────────────────────────┘
+```
 
-**Consult the Game Programmer Agent** when:
-- Implementing mechanics architecturally
-- Performance optimization
-- Debugging complex systems
-- Engine-specific implementation
+```csharp
+// ✅ Production-Ready: Progression Manager
+public class ProgressionManager : MonoBehaviour
+{
+    [Header("Progression Config")]
+    [SerializeField] private int baseXP = 100;
+    [SerializeField] private float growthRate = 2.0f;
+    [SerializeField] private int maxLevel = 50;
 
-**Related Skills**:
-- **game-design-theory**: Theoretical foundations
-- **level-design**: Applying mechanics in level context
-- **game-engines**: Implementation on specific engines
+    private int _currentLevel = 1;
+    private int _currentXP = 0;
+
+    public event Action<int> OnLevelUp;
+    public event Action<int, int> OnXPGained; // current, required
+
+    public int XPForLevel(int level)
+    {
+        return Mathf.RoundToInt(baseXP * Mathf.Pow(level, growthRate));
+    }
+
+    public void AddXP(int amount)
+    {
+        _currentXP += amount;
+        int required = XPForLevel(_currentLevel);
+
+        OnXPGained?.Invoke(_currentXP, required);
+
+        while (_currentXP >= required && _currentLevel < maxLevel)
+        {
+            _currentXP -= required;
+            _currentLevel++;
+            OnLevelUp?.Invoke(_currentLevel);
+            required = XPForLevel(_currentLevel);
+        }
+    }
+
+    public float GetProgressToNextLevel()
+    {
+        return (float)_currentXP / XPForLevel(_currentLevel);
+    }
+}
+```
+
+## Movement Mechanics
+
+```
+PLATFORMER FEEL PARAMETERS:
+┌─────────────────────────────────────────────────────────────┐
+│  MOVEMENT:                                                   │
+│  • Walk Speed: 5-8 units/sec                                │
+│  • Run Speed: 10-15 units/sec                               │
+│  • Acceleration: 20-50 units/sec²                           │
+│  • Deceleration: 30-60 units/sec² (snappier = higher)       │
+│                                                              │
+│  JUMP:                                                       │
+│  • Jump Height: 2-4 units                                   │
+│  • Jump Duration: 0.3-0.5 sec                               │
+│  • Gravity: 20-40 units/sec²                                │
+│  • Fall Multiplier: 1.5-2.5x (faster fall = tighter)       │
+│                                                              │
+│  FEEL ENHANCERS:                                             │
+│  • Coyote Time: 0.1-0.15 sec (jump after leaving edge)      │
+│  • Jump Buffer: 0.1-0.15 sec (early jump input)             │
+│  • Variable Jump: Release = shorter jump                    │
+│  • Air Control: 50-80% of ground control                    │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Event-Driven Architecture
+
+```
+EVENT SYSTEM PATTERN:
+┌─────────────────────────────────────────────────────────────┐
+│  ACTION EXECUTED                                             │
+│       │                                                      │
+│       ▼                                                      │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │              EVENT DISPATCHER                        │    │
+│  │  DamageDealt(amount, position, type)                │    │
+│  └─────────────────────────────────────────────────────┘    │
+│       │                                                      │
+│       ├──→ VFX System: Spawn damage numbers                 │
+│       ├──→ Audio System: Play hit sound                     │
+│       ├──→ UI System: Update health bar                     │
+│       ├──→ Camera System: Screen shake                      │
+│       ├──→ AI System: Alert nearby enemies                  │
+│       └──→ Analytics: Log combat event                      │
+│                                                              │
+│  BENEFITS:                                                   │
+│  • Systems don't need direct references                     │
+│  • Easy to add/remove observers                             │
+│  • Same event triggers multiple effects                     │
+│  • Easy networking (replicate events)                       │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Balance Iteration
+
+```
+RAPID BALANCE WORKFLOW:
+┌─────────────────────────────────────────────────────────────┐
+│  1. PLAYTEST (15-30 min)                                     │
+│     → Watch players, note friction points                   │
+│                                                              │
+│  2. ANALYZE (5-15 min)                                       │
+│     → What felt wrong? Too easy/hard?                       │
+│     → Check telemetry data                                  │
+│                                                              │
+│  3. ADJUST (5-10 min)                                        │
+│     → Change ONE variable at a time                         │
+│     → Document the change                                   │
+│                                                              │
+│  4. TEST (5 min)                                             │
+│     → Verify change has intended effect                     │
+│                                                              │
+│  5. REPEAT                                                   │
+│     → Target: 4-6 iterations per hour                       │
+└─────────────────────────────────────────────────────────────┘
+
+BALANCE SPREADSHEET FORMAT:
+┌──────────┬────────┬─────────┬─────────┬──────────┐
+│ Weapon   │ Damage │ Speed   │ Range   │ DPS      │
+├──────────┼────────┼─────────┼─────────┼──────────┤
+│ Sword    │ 10     │ 1.0/sec │ 2m      │ 10.0     │
+│ Axe      │ 20     │ 0.5/sec │ 1.5m    │ 10.0     │
+│ Dagger   │ 5      │ 2.0/sec │ 1m      │ 10.0     │
+│ Spear    │ 12     │ 0.8/sec │ 3m      │ 9.6      │
+└──────────┴────────┴─────────┴─────────┴──────────┘
+```
+
+## 🔧 Troubleshooting
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ PROBLEM: Controls feel unresponsive                         │
+├─────────────────────────────────────────────────────────────┤
+│ SOLUTIONS:                                                   │
+│ → Add immediate audio/visual feedback on input              │
+│ → Reduce input-to-action delay (< 100ms)                    │
+│ → Add input buffering for combo actions                     │
+│ → Check for frame rate issues                               │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ PROBLEM: One strategy dominates all others                  │
+├─────────────────────────────────────────────────────────────┤
+│ SOLUTIONS:                                                   │
+│ → Nerf dominant option OR buff alternatives                 │
+│ → Add situational counters                                  │
+│ → Create rock-paper-scissors relationships                  │
+│ → Add resource costs to powerful options                    │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ PROBLEM: Players don't understand mechanic                  │
+├─────────────────────────────────────────────────────────────┤
+│ SOLUTIONS:                                                   │
+│ → Add clearer visual/audio feedback                         │
+│ → Create safe tutorial space                                │
+│ → Use consistent visual language                            │
+│ → Add UI hints or tooltips                                  │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ PROBLEM: Progression feels grindy                           │
+├─────────────────────────────────────────────────────────────┤
+│ SOLUTIONS:                                                   │
+│ → Reduce XP requirements                                    │
+│ → Add more XP sources                                       │
+│ → Give meaningful rewards more frequently                   │
+│ → Add catch-up mechanics for late content                   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Mechanic Comparison
+
+| Mechanic | Skill Floor | Skill Ceiling | Feedback Speed |
+|----------|-------------|---------------|----------------|
+| Button Mash | Low | Low | Instant |
+| Timing-Based | Medium | High | Instant |
+| Resource Management | Medium | High | Delayed |
+| Combo System | High | Very High | Instant |
+| Strategic | Medium | Very High | Delayed |
 
 ---
 
-**Master gameplay mechanics to transform design concepts into responsive, engaging, balanceable systems that players love.**
+**Use this skill**: When implementing core mechanics, balancing systems, or designing player feedback.
