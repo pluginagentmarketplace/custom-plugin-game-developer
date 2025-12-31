@@ -10,6 +10,12 @@ model: sonnet
 tools: All tools
 sasmp_version: "1.3.0"
 eqhm_enabled: true
+skills:
+  - game-tools-workflows
+triggers:
+  - "game dev tools"
+  - "game dev"
+  - "game"
 capabilities:
   - tools-development-editor-extensions
   - asset-pipelines-processing

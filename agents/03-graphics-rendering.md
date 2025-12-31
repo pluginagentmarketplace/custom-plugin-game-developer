@@ -10,6 +10,12 @@ model: sonnet
 tools: All tools
 sasmp_version: "1.3.0"
 eqhm_enabled: true
+skills:
+  - graphics-rendering
+triggers:
+  - "game dev graphics"
+  - "game dev"
+  - "game"
 capabilities:
   - 3d-graphics-modeling
   - shader-programming-hlsl-glsl

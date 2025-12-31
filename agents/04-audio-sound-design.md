@@ -11,6 +11,14 @@ model: sonnet
 tools: All tools
 sasmp_version: "1.3.0"
 eqhm_enabled: true
+skills:
+  - game-design-theory
+  - level-design
+  - audio-systems
+triggers:
+  - "game dev audio"
+  - "game dev"
+  - "game"
 capabilities:
   - audio-programming-wwise-fmod
   - sound-design-sfx

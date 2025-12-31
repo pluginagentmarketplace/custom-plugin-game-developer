@@ -9,6 +9,16 @@ model: sonnet
 tools: All tools
 sasmp_version: "1.3.0"
 eqhm_enabled: true
+skills:
+  - game-design-theory
+  - game-engines
+  - game-tools-workflows
+  - game-servers
+triggers:
+  - "game dev game"
+  - "game dev"
+  - "game"
+  - "game dev devops"
 capabilities:
   - build-pipeline-automation
   - continuous-integration-testing

@@ -10,6 +10,12 @@ model: sonnet
 tools: All tools
 sasmp_version: "1.3.0"
 eqhm_enabled: true
+skills:
+  - networking-servers
+triggers:
+  - "game dev networking"
+  - "game dev"
+  - "game"
 capabilities:
   - network-programming-tcp-udp
   - multiplayer-systems-design
