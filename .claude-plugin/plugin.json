@@ -1,7 +1,7 @@
 {
   "name": "custom-plugin-game-developer",
   "version": "1.0.0",
-  "title": "🎮 Complete Game Developer Plugin - Master Game Development",
+  "title": "\ud83c\udfae Complete Game Developer Plugin - Master Game Development",
   "description": "Comprehensive game development learning system with 7 specialized agents, 21 in-depth skills, 4 slash commands, and automation hooks. Master game design, programming, graphics, audio, networking, tools, and publishing across Unity, Unreal Engine, and Godot.",
   "author": {
     "name": "Game Developer Community",
@@ -29,50 +29,47 @@
     "particle-systems",
     "game-servers"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pluginagentmarketplace/custom-plugin-game-developer"
-  },
+  "repository": "https://github.com/pluginagentmarketplace/custom-plugin-game-developer",
   "agents": [
     {
       "id": "game-designer",
-      "name": "🎨 Game Designer Agent",
+      "name": "\ud83c\udfa8 Game Designer Agent",
       "file": "agents/01-game-designer.md",
       "description": "Expert in game design, mechanics, level design, player experience, and game balance. Creates engaging gameplay and defines game vision."
     },
     {
       "id": "game-programmer",
-      "name": "💻 Game Programmer Agent",
+      "name": "\ud83d\udcbb Game Programmer Agent",
       "file": "agents/02-game-programmer.md",
       "description": "Specialist in C#/C++ game programming, engine systems, gameplay systems, architecture patterns, and code optimization."
     },
     {
       "id": "graphics-rendering",
-      "name": "🖼️ Graphics & Rendering Agent",
+      "name": "\ud83d\uddbc\ufe0f Graphics & Rendering Agent",
       "file": "agents/03-graphics-rendering.md",
       "description": "Expert in 3D graphics, shader programming, VFX systems, lighting design, and rendering optimization for visual excellence."
     },
     {
       "id": "audio-sound-design",
-      "name": "🎵 Audio & Sound Design Agent",
+      "name": "\ud83c\udfb5 Audio & Sound Design Agent",
       "file": "agents/04-audio-sound-design.md",
       "description": "Specialist in game audio, music composition, spatial audio, voice systems, and immersive soundscapes."
     },
     {
       "id": "networking-multiplayer",
-      "name": "🌐 Networking & Multiplayer Agent",
+      "name": "\ud83c\udf10 Networking & Multiplayer Agent",
       "file": "agents/05-networking-multiplayer.md",
       "description": "Expert in multiplayer systems, netcode, server architecture, synchronization algorithms, and scalable game backends."
     },
     {
       "id": "tools-pipeline",
-      "name": "⚙️ Tools & Pipeline Agent",
+      "name": "\u2699\ufe0f Tools & Pipeline Agent",
       "file": "agents/06-tools-pipeline.md",
       "description": "Specialist in game development tools, asset pipelines, build automation, CI/CD systems, and team workflows."
     },
     {
       "id": "game-publishing",
-      "name": "🚀 Game Publishing Agent",
+      "name": "\ud83d\ude80 Game Publishing Agent",
       "file": "agents/07-game-publishing.md",
       "description": "Expert in game publishing, platform requirements, monetization strategies, marketing, and live operations."
     }
