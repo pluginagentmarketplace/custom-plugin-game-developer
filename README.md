@@ -63,7 +63,7 @@
 
 ```bash
 # Step 1️⃣ Add the marketplace
-/plugin add marketplace pluginagentmarketplace/custom-plugin-game-developer
+/plugin marketplace add pluginagentmarketplace/custom-plugin-game-developer
 
 # Step 2️⃣ Install the plugin
 /plugin install custom-plugin-game-developer@pluginagentmarketplace-game-developer

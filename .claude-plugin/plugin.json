@@ -228,9 +228,6 @@
       "description": "Monetization strategies, in-app purchases, battle passes, economy design, and player retention mechanics"
     }
   ],
-  "hooks": {
-    "file": "./hooks/hooks.json"
-  },
   "documentation": {
     "readme": "README.md",
     "architecture": "ARCHITECTURE.md",
